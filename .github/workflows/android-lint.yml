@@ -3,10 +3,6 @@ run-name: ${{ github.actor }} protecting code quality! 🛡️
 
 on:
   pull_request:
-    branches:
-      - main
-      - develop
-      - 'releases/**'
     paths:
       - .github/workflows/android-lint.yml
       - '*/src/**'
