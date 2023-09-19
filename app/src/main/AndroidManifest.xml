@@ -17,7 +17,7 @@
         android:theme="@style/Theme.Mobile2_Scaffolding"
         tools:targetApi="31">
 
-        <activity android:name="ar.edu.unlam.mobile2.detalle.NewDetailActivity" />
+       
         <activity
             android:name=".MainActivity"
             android:exported="true"
