@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Mobile2_Scaffolding</string>
+    <string name="action_settings">Preferencias</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Primer Fragment</string>
+    <string name="second_fragment_label">Segundo Fragment</string>
+    <string name="next">Siguiente</string>
+    <string name="previous">Anterior</string>
+
+    <string name="hello_first_fragment">Saludo primer fragment</string>
+    <string name="hello_second_fragment">Saludo segundo fragment. Arg: %1$s</string>
+
+    <string name="cat_image">Imagen Gatito</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="lorem">
+        With the online text generator you can process your personal Lorem Ipsum enriching it with html elements that define its structure, with the possibility to insert external links, but not only.
+    </string>
 </resources>

@@ -2,18 +2,19 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id "org.jetbrains.kotlin.kapt"
     id 'com.google.dagger.hilt.android'
     id 'org.jetbrains.kotlinx.kover'
 }
 
 android {
-    namespace 'ar.edu.unlam.mobile.scaffold'
-    compileSdk 34
+    namespace 'ar.edu.unlam.mobile2'
+    compileSdk 33
 
     defaultConfig {
-        applicationId "ar.edu.unlam.mobile.scaffold"
+        applicationId "ar.edu.unlam.mobile2"
         minSdk 24
-        targetSdk 34
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -32,17 +33,19 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
+        //kotlinCompilerExtensionVersion = "1.4.2"
     }
     kotlinOptions {
         jvmTarget = '17'
     }
     buildFeatures {
-        compose true
+        compose = true
+        viewBinding true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.4.3'
+        kotlinCompilerExtensionVersion = "1.4.5"
     }
-    packaging {
+    packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
@@ -50,38 +53,90 @@ android {
 }
 
 dependencies {
-    def nav_version = "2.7.1"
-    def hilt_version = "2.47"
-    def retrofit_version = "2.9.0"
+    //collapsing topappbar
+    implementation "com.google.accompanist:accompanist-swiperefresh:0.18.0"
 
-    // Navigation
-    implementation "androidx.navigation:navigation-compose:$nav_version"
-
-    // Hilt & Dagger
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
-    kapt "com.google.dagger:hilt-compiler:$hilt_version"
-
-    // Retrofit: para invocar servicios externos
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-
-    // Coil
-    implementation 'io.coil-kt:coil-compose:2.4.0'
-
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
-    implementation 'androidx.activity:activity-compose:1.7.2'
-    implementation platform('androidx.compose:compose-bom:2023.08.00')
+    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
+    implementation 'androidx.activity:activity-compose:1.5.1'
+    implementation platform('androidx.compose:compose-bom:2022.10.00')
     implementation 'androidx.compose.ui:ui'
     implementation 'androidx.compose.ui:ui-graphics'
     implementation 'androidx.compose.ui:ui-tooling-preview'
-    implementation 'androidx.compose.material3:material3'
+    implementation 'com.google.ar.sceneform:filament-android:1.17.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation platform('androidx.compose:compose-bom:2023.08.00')
+
+    implementation'androidx.navigation:navigation-compose:2.5.3a'
+    implementation 'androidx.compose.ui:ui:1.4.3'
+    implementation 'androidx.compose.material:material:1.4.3'
+    // Inyeccion de dependencias con Hilt
+    implementation 'com.google.dagger:hilt-android:2.45'
+    androidTestImplementation platform('androidx.compose:compose-bom:2022.10.00')
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
+    kapt 'com.google.dagger:hilt-compiler:2.45'
+
+    // Importante: Definir ambos lifecycle para que no exista conflicto entre versiones
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+    implementation 'androidx.navigation:navigation-compose:2.5.3'
+
+    // Retrofit: para invocar servicios externos
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // Jetpack Compose
+    implementation 'androidx.compose:compose-bom:2023.04.00'
+    androidTestImplementation 'androidx.compose:compose-bom:2023.04.00'
+    // Material Design 3
+    implementation("androidx.compose.material3:material3:1.0.1")
+
+    // Async Images
+    implementation("io.coil-kt:coil-compose:2.3.0")
+
+    //LiveData
+    def lifecycle_version = "2.5.1"
+
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    // ViewModel utilities for Compose
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+
+    implementation 'androidx.compose.runtime:runtime-livedata:1.5.0-beta02'
+
+
+    //Room
+    def roomVersion = '2.5.0'
+
+    implementation("androidx.room:room-runtime:${roomVersion}")
+    implementation("androidx.room:room-ktx:${roomVersion}")
+    kapt("androidx.room:room-compiler:${roomVersion}")
+
+
+    //Tabs
+    implementation("com.google.accompanist:accompanist-pager:0.20.0")
+    implementation("com.google.accompanist:accompanist-pager-indicators:0.20.0")
+
+//App center
+
+
+    def appCenterSdkVersion = '4.4.5'
+    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
 }
