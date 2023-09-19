@@ -55,7 +55,7 @@ import ar.edu.unlam.mobile2.Tabs.repository.Tabs_item
 import ar.edu.unlam.mobile2.Tabs.ui.Tabs
 import ar.edu.unlam.mobile2.Tabs.ui.Tabs_content
 import ar.edu.unlam.mobile2.mediastackapi.viewmodel.NewsViewModel
-import ar.edu.unlam.mobile2.theme.Mobile2_ScaffoldingTheme
+import ar.edu.unlam.mobile2.ui.theme.Mobile2_ScaffoldingTheme
 import ar.edu.unlam.mobile2.weatherapi.ui.WeatherViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
@@ -69,7 +69,7 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
-
+import ar.edu.unlam.mobile2.ui.components.BotonFlotante
 
 
 @AndroidEntryPoint
@@ -91,63 +91,7 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-
 }
-
-
-/*@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
-@Preview(showSystemUi = true)
-@Composable
-fun MyPreview() {
-
-    val navController = rememberNavController()
-    val scaffoldState = rememberScaffoldState()
-    val scope = rememberCoroutineScope()
-
-    val navegationItem = listOf(
-        ItemsMenu.Pantalla1,
-        ItemsMenu.Pantalla2,
-        ItemsMenu.Pantalla3
-    )
-
-    Mobile2_ScaffoldingTheme {
-        Scaffold(
-            modifier = Modifier.fillMaxSize(),
-            backgroundColor = MaterialTheme.colorScheme.background,
-            scaffoldState = scaffoldState,
-            content = {
-                Column(
-                    Modifier
-                        .fillMaxWidth()
-                    /*.verticalScroll(rememberScrollState())*/
-                ) {
-                    TopAppBar(
-                        title = {
-                            Text(
-                                text = "My App", color = Color.White, textAlign = TextAlign.Center,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                            )
-                        },
-                        backgroundColor = MaterialTheme.colorScheme.background
-                    )
-                    LazyColumn() {
-                        items(100) {
-                            Text(it.toString())
-                        }
-                    }
-                }
-
-            },
-            bottomBar = { NavegacionInferior(navController, navegationItem,viewModel) },
-        )
-    }
-
-
-}
-
- */
-
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -211,29 +155,6 @@ fun PantallaPrincipal(weatherViewModel: WeatherViewModel, viewModel: NewsViewMod
 }
 
 @Composable
-fun BotonFlotante(navController: NavHostController,viewModel: NewsViewModel) {
-
-    val isFloatingButtonVisible = viewModel.isFloatingButtonVisible.value
-    if (isFloatingButtonVisible) {
-        FloatingActionButton(
-            modifier = Modifier.size(55.dp, 55.dp),
-            containerColor = MaterialTheme.colorScheme.primary,
-            onClick = {
-
-                navController.navigate("pantalla4")
-            }
-        ) {
-            Icon(
-                imageVector = Icons.Filled.Add,
-                contentDescription = "Anadir",
-                tint = Color.Black
-            )
-
-        }
-    }
-}
-
-@Composable
 fun currentRoute(navController: NavHostController): String? {
     val entrada by navController.currentBackStackEntryAsState()
     return entrada?.destination?.route
@@ -241,7 +162,6 @@ fun currentRoute(navController: NavHostController): String? {
 
 @Composable
 fun NavegacionInferior(navController: NavHostController, menuItem: List<ItemsMenu>,viewModel: NewsViewModel) {
-
     val isFloatingButtonVisible = viewModel.isFloatingButtonVisible.value
     if (isFloatingButtonVisible) {
     BottomAppBar(
@@ -264,8 +184,7 @@ fun NavegacionInferior(navController: NavHostController, menuItem: List<ItemsMen
                                 Color.White
                             })
                         )
-                    },
-                    //label = { Text(item.titulo, color = Color.White) }
+                    }
                 )
 
 

@@ -21,10 +21,6 @@ class NewsViewModel @Inject constructor(
     private val getNews: GetNews,
 
 ) : ViewModel() {
-
-
-
-
     private val _listaNoticias = MutableLiveData<List<New>>()
     val listaNoticias: LiveData<List<New>> = _listaNoticias
 
@@ -54,10 +50,6 @@ class NewsViewModel @Inject constructor(
     fun enviarNotica(item: New){
         this.notica = item
     }
-
-
-
-
 
     private val _isFloatingButtonVisible = mutableStateOf(true)
     val isFloatingButtonVisible: State<Boolean> = _isFloatingButtonVisible

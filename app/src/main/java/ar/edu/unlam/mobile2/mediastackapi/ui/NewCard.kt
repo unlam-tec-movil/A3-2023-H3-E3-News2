@@ -28,7 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ar.edu.unlam.mobile2.R
 import ar.edu.unlam.mobile2.mediastackapi.New
-import ar.edu.unlam.mobile2.theme.Mobile2_ScaffoldingTheme
+import ar.edu.unlam.mobile2.ui.theme.Mobile2_ScaffoldingTheme
 
 @Preview(showSystemUi = true)
 @Preview(showBackground = false)

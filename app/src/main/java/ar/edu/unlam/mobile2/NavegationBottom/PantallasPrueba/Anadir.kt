@@ -57,7 +57,6 @@ fun Anadir(navController: NavHostController) {
 
     Column() {
 
-
     // Barra superior
 
 

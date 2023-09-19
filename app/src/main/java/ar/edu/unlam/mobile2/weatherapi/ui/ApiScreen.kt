@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CutCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,7 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import ar.edu.unlam.mobile2.theme.Mobile2_ScaffoldingTheme
+import ar.edu.unlam.mobile2.ui.theme.Mobile2_ScaffoldingTheme
 import ar.edu.unlam.mobile2.weatherapi.data.WeatherResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -33,7 +34,7 @@ fun MyWeatherPreview() {
 
     Mobile2_ScaffoldingTheme {
         Box(modifier = Modifier.fillMaxWidth()) {
-            androidx.compose.material.Card(
+            Card(
                 modifier = Modifier
                     .padding()
                     .align(Alignment.TopEnd),
@@ -82,7 +83,7 @@ fun WeatherScreen(weatherViewModel: WeatherViewModel) {
 
     Mobile2_ScaffoldingTheme {
         Box(modifier = Modifier.fillMaxWidth()) {
-            androidx.compose.material.Card(
+            Card(
                 modifier = Modifier
                     .padding()
                     .align(Alignment.TopEnd),

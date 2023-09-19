@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 
 import ar.edu.unlam.mobile2.mediastackapi.New
-import ar.edu.unlam.mobile2.theme.Mobile2_ScaffoldingTheme
+import ar.edu.unlam.mobile2.ui.theme.Mobile2_ScaffoldingTheme
 
 @Composable
 fun NoticaScreen(new: New,navController: NavHostController) {
