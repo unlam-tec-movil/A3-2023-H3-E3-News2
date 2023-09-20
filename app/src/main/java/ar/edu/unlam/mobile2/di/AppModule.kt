@@ -1,4 +1,4 @@
-package ar.edu.unlam.mobile2
+package ar.edu.unlam.mobile2.di
 
 import android.app.Application
 import androidx.room.Room
