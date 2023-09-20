@@ -7,7 +7,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -16,47 +15,34 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.BackdropScaffoldState
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Scaffold
-import androidx.compose.material.ScaffoldState
 import androidx.compose.material.TopAppBar
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.List
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.rememberUpdatedState
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import ar.edu.unlam.mobile2.NavegationBottom.ItemsMenu
-import ar.edu.unlam.mobile2.NavegationBottom.PantallasPrueba.NavegationHost
+import ar.edu.unlam.mobile2.ui.components.bottomnav.ItemsMenu
+import ar.edu.unlam.mobile2.ui.components.bottomnav.NavegationHost
 import ar.edu.unlam.mobile2.Tabs.repository.Tabs_item
-import ar.edu.unlam.mobile2.Tabs.ui.Tabs
-import ar.edu.unlam.mobile2.Tabs.ui.Tabs_content
-import ar.edu.unlam.mobile2.mediastackapi.viewmodel.NewsViewModel
+import ar.edu.unlam.mobile2.ui.components.tabs.Tabs
+import ar.edu.unlam.mobile2.ui.components.tabs.Tabs_content
+import ar.edu.unlam.mobile2.ui.components.mediastack.NewsViewModel
 import ar.edu.unlam.mobile2.ui.theme.Mobile2_ScaffoldingTheme
-import ar.edu.unlam.mobile2.weatherapi.ui.WeatherViewModel
+import ar.edu.unlam.mobile2.ui.screens.weather.WeatherViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
 import com.microsoft.appcenter.AppCenter
@@ -65,7 +51,6 @@ import com.microsoft.appcenter.crashes.Crashes
 import dagger.hilt.android.AndroidEntryPoint
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
@@ -161,7 +146,7 @@ fun currentRoute(navController: NavHostController): String? {
 }
 
 @Composable
-fun NavegacionInferior(navController: NavHostController, menuItem: List<ItemsMenu>,viewModel: NewsViewModel) {
+fun NavegacionInferior(navController: NavHostController, menuItem: List<ItemsMenu>, viewModel: NewsViewModel) {
     val isFloatingButtonVisible = viewModel.isFloatingButtonVisible.value
     if (isFloatingButtonVisible) {
     BottomAppBar(
@@ -195,7 +180,7 @@ fun NavegacionInferior(navController: NavHostController, menuItem: List<ItemsMen
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalPagerApi::class)
 @Composable
-fun Tabs_Principal(viewModel: NewsViewModel,navController: NavHostController) {
+fun Tabs_Principal(viewModel: NewsViewModel, navController: NavHostController) {
     val tabs = listOf(
         Tabs_item.item_general(viewModel,navController),
         Tabs_item.item_business(viewModel,navController),

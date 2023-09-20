@@ -2,13 +2,13 @@ package ar.edu.unlam.mobile2
 
 import android.app.Application
 import androidx.room.Room
-import ar.edu.unlam.mobile2.mediastackapi.GetNews
-import ar.edu.unlam.mobile2.mediastackapi.data.api.MediastackApi
-import ar.edu.unlam.mobile2.mediastackapi.data.NewRepository
-import ar.edu.unlam.mobile2.mediastackapi.data.local.NewDao
-import ar.edu.unlam.mobile2.mediastackapi.data.local.NewDatabase
-import ar.edu.unlam.mobile2.weatherapi.repository.WeatherApiService
-import ar.edu.unlam.mobile2.weatherapi.repository.WeatherStackRepository
+import ar.edu.unlam.mobile2.data.mediastack.repository.GetNews
+import ar.edu.unlam.mobile2.data.mediastack.repository.MediastackApi
+import ar.edu.unlam.mobile2.data.mediastack.repository.NewRepository
+import ar.edu.unlam.mobile2.data.mediastack.local.NewDao
+import ar.edu.unlam.mobile2.data.mediastack.local.NewDatabase
+import ar.edu.unlam.mobile2.data.weather.repository.WeatherApiService
+import ar.edu.unlam.mobile2.data.weather.repository.WeatherStackRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,7 +32,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNewDao(application: Application): NewDao{
+    fun provideNewDao(application: Application): NewDao {
         val db = Room.databaseBuilder(application, NewDatabase::class.java,"news_db").build()
         return db.dao
     }
@@ -45,7 +45,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideGetCharacters(repository: NewRepository): GetNews{
+    fun provideGetCharacters(repository: NewRepository): GetNews {
         return GetNews(repository)
     }
 
