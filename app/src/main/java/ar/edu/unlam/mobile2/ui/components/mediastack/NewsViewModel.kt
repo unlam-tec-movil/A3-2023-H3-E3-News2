@@ -49,15 +49,15 @@ class NewsViewModel @Inject constructor(
         this.notica = item
     }
 
-    private val _isFloatingButtonVisible = mutableStateOf(true)
-    val isFloatingButtonVisible: State<Boolean> = _isFloatingButtonVisible
+    private val _isVisible = mutableStateOf(false)
+    val isVisible: State<Boolean> = _isVisible
 
-    fun hideFloatingButton() {
-        _isFloatingButtonVisible.value = false
+    fun hideItem() {
+        _isVisible.value = false
     }
 
-    fun showFloatingButton() {
-        _isFloatingButtonVisible.value = true
+    fun showItem() {
+        _isVisible.value = true
     }
 
     init {

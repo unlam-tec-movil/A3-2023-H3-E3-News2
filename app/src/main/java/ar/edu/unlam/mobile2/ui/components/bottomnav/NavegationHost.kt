@@ -11,6 +11,7 @@ import ar.edu.unlam.mobile2.ui.screens.Inicio
 import ar.edu.unlam.mobile2.ui.screens.mediastack.NoticaScreen
 import ar.edu.unlam.mobile2.domain.mediastack.models.New
 import ar.edu.unlam.mobile2.ui.components.mediastack.NewsViewModel
+import ar.edu.unlam.mobile2.ui.screens.IngresarNombre
 import ar.edu.unlam.mobile2.ui.screens.weather.WeatherViewModel
 
 
@@ -20,27 +21,30 @@ fun NavegationHost(navHostController: NavHostController, weatherViewModel: Weath
 
     NavHost(
         navController = navHostController,
-        startDestination = ItemsMenu.Pantalla1.ruta,
+        startDestination = ItemsMenu.IngresarNombreScreen.ruta,
 
         ){
+        composable(ItemsMenu.IngresarNombreScreen.ruta){
+            IngresarNombre(navHostController)
+        }
         composable(ItemsMenu.Pantalla1.ruta){
-            viewModel.showFloatingButton()
+            viewModel.showItem()
             Inicio(weatherViewModel, viewModel,navHostController)
         }
         composable(ItemsMenu.Pantalla2.ruta){
-            viewModel.showFloatingButton()
+            viewModel.showItem()
             Favorito(viewModel = viewModel,navHostController)
         }
         composable(ItemsMenu.Pantalla3.ruta){
-            viewModel.showFloatingButton()
+            viewModel.showItem()
             Filtro(viewModel,navHostController)
         }
         composable(ItemsMenu.Pantalla4.ruta){
-            viewModel.hideFloatingButton()
+            viewModel.hideItem()
             Anadir(navHostController)
         }
         composable(ItemsMenu.Pantalla5.ruta){
-            viewModel.showFloatingButton()
+            viewModel.showItem()
             var new2 = viewModel.resivirNoticia()
             NoticaScreen(new2,navHostController)
         }

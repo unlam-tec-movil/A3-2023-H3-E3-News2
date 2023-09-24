@@ -24,7 +24,7 @@ import ar.edu.unlam.mobile2.ui.components.mediastack.NewsViewModel
 @Composable
 fun BotonFlotante(navController: NavHostController, viewModel: NewsViewModel) {
     //var visible by remember { mutableStateOf(true) }
-     var visible = viewModel.isFloatingButtonVisible.value
+    var visible = viewModel.isVisible.value
     val density = LocalDensity.current
     AnimatedVisibility(
         visible = visible,
@@ -50,53 +50,4 @@ fun BotonFlotante(navController: NavHostController, viewModel: NewsViewModel) {
             Icon(imageVector = Icons.Filled.Add, contentDescription = "Add")
         }
     }
-
 }
-
-/*
-var visible by remember { mutableStateOf(true) }
-    val density = LocalDensity.current
-    AnimatedVisibility(
-        visible = visible,
-        enter = slideInVertically {
-            // Slide in from 40 dp from the top.
-            with(density) { -40.dp.roundToPx() }
-        } + expandVertically(
-            // Expand from the top.
-            expandFrom = Alignment.Top
-        ) + fadeIn(
-            // Fade in with the initial alpha of 0.3f.
-            initialAlpha = 0.3f
-        ),
-        exit = slideOutVertically() + shrinkVertically() + fadeOut()
-    ) {
-        IconButton(onClick = {
-            onClickNavigation()
-            visible = !visible
-            Log.i("CLICK", "Click")
-            Log.i("Visible", visible.toString())
-        }) {
-            Icon(imageVector = Icons.Filled.Add, contentDescription = "Add")
-        }
-    }
-
-    BOTON DE FACU
-    val isFloatingButtonVisible = viewModel.isFloatingButtonVisible.value
-    if (isFloatingButtonVisible) {
-        FloatingActionButton(
-            modifier = Modifier.size(55.dp, 55.dp),
-            containerColor = MaterialTheme.colorScheme.primary,
-            onClick = {
-
-                navController.navigate("pantalla4")
-            }
-        ) {
-            Icon(
-                imageVector = Icons.Filled.Add,
-                contentDescription = "añadir-noticias",
-                tint = Color.Black
-            )
-
-        }
-    }
- */

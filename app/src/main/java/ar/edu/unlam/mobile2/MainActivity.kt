@@ -147,8 +147,8 @@ fun currentRoute(navController: NavHostController): String? {
 
 @Composable
 fun NavegacionInferior(navController: NavHostController, menuItem: List<ItemsMenu>, viewModel: NewsViewModel) {
-    val isFloatingButtonVisible = viewModel.isFloatingButtonVisible.value
-    if (isFloatingButtonVisible) {
+    val visible = viewModel.isVisible.value
+    if (visible) {
     BottomAppBar(
         modifier = Modifier.fillMaxWidth(),
         containerColor = MaterialTheme.colorScheme.onBackground
@@ -161,7 +161,7 @@ fun NavegacionInferior(navController: NavHostController, menuItem: List<ItemsMen
                     onClick = { navController.navigate(item.ruta) },
                     icon = {
                         Icon(
-                            painter = painterResource(id = item.icono),
+                            painter = painterResource(id = item.icono!!),
                             contentDescription = item.titulo,
                             tint = (if (currentRoute == item.ruta) {
                                 MaterialTheme.colorScheme.primary

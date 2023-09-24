@@ -1,7 +1,5 @@
 package ar.edu.unlam.mobile2.ui.screens
 
-
-
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 
@@ -45,7 +43,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import ar.edu.unlam.mobile2.R
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Anadir(navController: NavHostController) {
@@ -56,10 +53,6 @@ fun Anadir(navController: NavHostController) {
     var text4 by remember { mutableStateOf("") }
 
     Column() {
-
-    // Barra superior
-
-
     TopAppBar(
 
         title = { Text(text = "") },
@@ -80,16 +73,13 @@ fun Anadir(navController: NavHostController) {
     )
     Spacer(modifier = Modifier.height(15.dp))
     Text(
-
         text = "Titulo",
         color = MaterialTheme.colorScheme.tertiary,
         modifier = Modifier
             .padding(start = 16.dp)
 
     )
-
     Spacer(modifier = Modifier.height(5.dp))
-
     TextField(
         value = text,
         onValueChange = {
@@ -102,37 +92,29 @@ fun Anadir(navController: NavHostController) {
             .padding(16.dp)
             .size(height = 50.dp, width = 600.dp)
     )
-
     Text(
-
         text = "Descripcion",
         color = MaterialTheme.colorScheme.tertiary,
         modifier = Modifier
             .padding(start = 16.dp)
 
     )
-
     Spacer(modifier = Modifier.height(5.dp))
-
     TextField(
         value = text2,
         onValueChange = {
             text2 = it
         },
-
         modifier = Modifier
             .padding(16.dp)
             .size(height = 130.dp, width = 600.dp)
     )
-
     Row(){
-
         Text(
             text = "Categoria",
             color = MaterialTheme.colorScheme.tertiary,
             modifier = Modifier
                 .padding(start = 16.dp))
-
         Text(
             text = "Pais",
             color = MaterialTheme.colorScheme.tertiary,
@@ -142,9 +124,7 @@ fun Anadir(navController: NavHostController) {
 
 
     }
-
     Row(){
-
         TextField(
             value = text3,
             onValueChange = {
@@ -154,7 +134,6 @@ fun Anadir(navController: NavHostController) {
                 .padding(16.dp)
                 .size(height = 50.dp, width = 170.dp)
         )
-
         TextField(
             value = text4,
             onValueChange = {
@@ -164,11 +143,7 @@ fun Anadir(navController: NavHostController) {
                 .padding(16.dp)
                 .size(height = 50.dp, width = 170.dp)
         )
-
-
-
     }
-
         Divider(
             modifier = Modifier
                 .fillMaxWidth()

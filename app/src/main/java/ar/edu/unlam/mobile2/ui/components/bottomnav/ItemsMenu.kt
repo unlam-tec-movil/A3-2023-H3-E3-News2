@@ -3,7 +3,7 @@ package ar.edu.unlam.mobile2.ui.components.bottomnav
 import ar.edu.unlam.mobile2.R
 
 sealed class ItemsMenu(
-    val icono: Int,
+    val icono: Int?,
     val titulo: String,
     val ruta: String,
 
@@ -13,5 +13,6 @@ sealed class ItemsMenu(
     object Pantalla3 : ItemsMenu(R.drawable.baseline_filter_alt_24, "Filtrar", "pantalla3")
     object Pantalla4 : ItemsMenu(R.drawable.baseline_add_24, "Anadir", "pantalla4")
     object Pantalla5 : ItemsMenu(R.drawable.baseline_add_24, "NoticaScreen", "pantalla5")
+    object IngresarNombreScreen: ItemsMenu(R.drawable.baseline_add_24, titulo = "IngresarNombreScreen", ruta = "ingresar-nombre-screen")
 
 }
