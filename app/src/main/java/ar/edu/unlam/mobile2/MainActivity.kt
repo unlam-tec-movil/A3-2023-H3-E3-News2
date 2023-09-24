@@ -55,6 +55,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import ar.edu.unlam.mobile2.ui.components.BotonFlotante
+import ar.edu.unlam.mobile2.ui.components.guest.GuestViewModel
 
 
 @AndroidEntryPoint
@@ -62,6 +63,7 @@ class MainActivity : ComponentActivity() {
 
     private val weatherViewModel by viewModels<WeatherViewModel>()
     private val newViewModel by viewModels<NewsViewModel>()
+    private val guestViewModel by viewModels<GuestViewModel>()
 
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,7 +74,7 @@ class MainActivity : ComponentActivity() {
         )
         setContent {
             Mobile2_ScaffoldingTheme {
-                PantallaPrincipal(weatherViewModel = weatherViewModel, viewModel = newViewModel)
+                PantallaPrincipal(weatherViewModel = weatherViewModel, viewModel = newViewModel, guestViewModel = guestViewModel)
             }
         }
     }
@@ -80,7 +82,7 @@ class MainActivity : ComponentActivity() {
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun PantallaPrincipal(weatherViewModel: WeatherViewModel, viewModel: NewsViewModel) {
+fun PantallaPrincipal(weatherViewModel: WeatherViewModel, viewModel: NewsViewModel, guestViewModel: GuestViewModel) {
 
     val navController = rememberNavController()
     val scaffoldState = rememberScaffoldState()
@@ -130,6 +132,7 @@ fun PantallaPrincipal(weatherViewModel: WeatherViewModel, viewModel: NewsViewMod
                     navHostController = navController,
                     weatherViewModel = weatherViewModel,
                     viewModel = viewModel,
+                    guestViewModel = guestViewModel,
                     new = viewModel.resivirNoticia()
                 )
             }

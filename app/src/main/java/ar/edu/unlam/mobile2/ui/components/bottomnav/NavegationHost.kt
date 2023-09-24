@@ -10,44 +10,51 @@ import ar.edu.unlam.mobile2.ui.screens.Filtro
 import ar.edu.unlam.mobile2.ui.screens.Inicio
 import ar.edu.unlam.mobile2.ui.screens.mediastack.NoticaScreen
 import ar.edu.unlam.mobile2.domain.mediastack.models.New
+import ar.edu.unlam.mobile2.ui.components.guest.GuestViewModel
 import ar.edu.unlam.mobile2.ui.components.mediastack.NewsViewModel
 import ar.edu.unlam.mobile2.ui.screens.IngresarNombre
 import ar.edu.unlam.mobile2.ui.screens.weather.WeatherViewModel
 
 
 @Composable
-fun NavegationHost(navHostController: NavHostController, weatherViewModel: WeatherViewModel, viewModel: NewsViewModel, new: New) {
+fun NavegationHost(
+    navHostController: NavHostController,
+    weatherViewModel: WeatherViewModel,
+    viewModel: NewsViewModel,
+    guestViewModel: GuestViewModel,
+    new: New
+) {
 
 
     NavHost(
         navController = navHostController,
         startDestination = ItemsMenu.IngresarNombreScreen.ruta,
 
-        ){
-        composable(ItemsMenu.IngresarNombreScreen.ruta){
-            IngresarNombre(navHostController)
+        ) {
+        composable(ItemsMenu.IngresarNombreScreen.ruta) {
+            IngresarNombre(navHostController, guestViewModel)
         }
-        composable(ItemsMenu.Pantalla1.ruta){
+        composable(ItemsMenu.Pantalla1.ruta) {
             viewModel.showItem()
-            Inicio(weatherViewModel, viewModel,navHostController)
+            Inicio(weatherViewModel, viewModel, navHostController)
         }
-        composable(ItemsMenu.Pantalla2.ruta){
+        composable(ItemsMenu.Pantalla2.ruta) {
             viewModel.showItem()
-            Favorito(viewModel = viewModel,navHostController)
+            Favorito(viewModel = viewModel, navHostController)
         }
-        composable(ItemsMenu.Pantalla3.ruta){
+        composable(ItemsMenu.Pantalla3.ruta) {
             viewModel.showItem()
-            Filtro(viewModel,navHostController)
+            Filtro(viewModel, navHostController)
         }
-        composable(ItemsMenu.Pantalla4.ruta){
+        composable(ItemsMenu.Pantalla4.ruta) {
             viewModel.hideItem()
             Anadir(navHostController)
         }
-        composable(ItemsMenu.Pantalla5.ruta){
+        composable(ItemsMenu.Pantalla5.ruta) {
             viewModel.showItem()
             var new2 = viewModel.resivirNoticia()
-            NoticaScreen(new2,navHostController)
+            NoticaScreen(new2, navHostController)
         }
-        }
-
     }
+
+}

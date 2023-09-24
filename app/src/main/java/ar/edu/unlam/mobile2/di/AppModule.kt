@@ -2,6 +2,9 @@ package ar.edu.unlam.mobile2.di
 
 import android.app.Application
 import androidx.room.Room
+import ar.edu.unlam.mobile2.data.guest.local.GuestDao
+import ar.edu.unlam.mobile2.data.guest.local.GuestDatabase
+import ar.edu.unlam.mobile2.data.guest.repository.GuestRepository
 import ar.edu.unlam.mobile2.data.mediastack.repository.GetNews
 import ar.edu.unlam.mobile2.data.mediastack.repository.MediastackApi
 import ar.edu.unlam.mobile2.data.mediastack.repository.NewRepository
@@ -9,6 +12,7 @@ import ar.edu.unlam.mobile2.data.mediastack.local.NewDao
 import ar.edu.unlam.mobile2.data.mediastack.local.NewDatabase
 import ar.edu.unlam.mobile2.data.weather.repository.WeatherApiService
 import ar.edu.unlam.mobile2.data.weather.repository.WeatherStackRepository
+import ar.edu.unlam.mobile2.ui.components.guest.GuestViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -66,4 +70,21 @@ object AppModule {
     fun provideWeatherRepository (api: WeatherApiService): WeatherStackRepository {
         return WeatherStackRepository(api)
     }
+
+
+    //Guest
+    @Provides
+    @Singleton
+    fun provideGuestDao(application: Application): GuestDao{
+        val db = Room.databaseBuilder(application, GuestDatabase::class.java,"guest_db").build()
+        return db.dao
+    }
+
+    @Provides
+    @Singleton
+    fun providesGuestRepository(dao: GuestDao): GuestRepository {
+        return GuestRepository(dao)
+    }
+
+
 }

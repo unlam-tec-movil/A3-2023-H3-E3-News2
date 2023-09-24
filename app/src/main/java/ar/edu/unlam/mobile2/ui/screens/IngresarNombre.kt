@@ -24,31 +24,37 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import ar.edu.unlam.mobile2.ui.components.guest.GuestViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun IngresarNombre(navHostController: NavHostController) {
+fun IngresarNombre(navHostController: NavHostController, guestViewModel: GuestViewModel) {
     Scaffold {
-        IngresarNombreContainer(navHostController)
+        if (guestViewModel.verificarBaseNoEstaVacia()){
+            navHostController.navigate("pantalla1")
+        }else {
+            IngresarNombreContainer(navHostController, guestViewModel)
+        }
+
     }
 }
 
 @Composable
-fun IngresarNombreContainer(navHostController: NavHostController, modifier: Modifier = Modifier) {
+fun IngresarNombreContainer(navHostController: NavHostController, guestViewModel: GuestViewModel, modifier: Modifier = Modifier) {
     Column(
         modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "Ingrese su nombre", color = Color.White)
-        MyTextField(navHostController)
+        MyTextField(navHostController, guestViewModel)
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun MyTextField(navHostController: NavHostController) {
+private fun MyTextField(navHostController: NavHostController, guestViewModel: GuestViewModel) {
     var name by remember { mutableStateOf("") }
     var nameError by remember { mutableStateOf(false) }
 
@@ -73,7 +79,14 @@ private fun MyTextField(navHostController: NavHostController) {
         Spacer(Modifier.size(16.dp))
         Button(
             onClick = {
-                if (name.isNotBlank()) navHostController.navigate("pantalla1")
+                if (name.isNotBlank()){
+                    guestViewModel.actualizarBase(name)
+                    navHostController.navigate("pantalla1") {
+                        popUpTo("ingresar-nombre-screen") { inclusive = true }
+                    }
+                }else{
+                    nameError = name.isBlank()
+                }
             }, modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
             Text("Continuar")

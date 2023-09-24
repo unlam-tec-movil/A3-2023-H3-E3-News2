@@ -21,7 +21,6 @@ fun Data.toDomain(): New {
     )
 }
 
-
 fun New.toEntity(): NewEntity {
     return NewEntity(
         id = this.id,
