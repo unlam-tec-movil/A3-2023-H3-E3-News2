@@ -16,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -30,13 +31,14 @@ import ar.edu.unlam.mobile2.ui.components.guest.GuestViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun IngresarNombre(navHostController: NavHostController, guestViewModel: GuestViewModel) {
+    val existeGuest by guestViewModel.existeGuest.observeAsState(initial = false)
+
     Scaffold {
-        if (guestViewModel.verificarBaseNoEstaVacia()){
+        if (existeGuest){
             navHostController.navigate("pantalla1")
         }else {
             IngresarNombreContainer(navHostController, guestViewModel)
         }
-
     }
 }
 

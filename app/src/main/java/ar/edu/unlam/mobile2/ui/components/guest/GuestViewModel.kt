@@ -1,5 +1,10 @@
 package ar.edu.unlam.mobile2.ui.components.guest
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ar.edu.unlam.mobile2.data.guest.repository.GuestRepository
@@ -12,6 +17,10 @@ import javax.inject.Inject
 class GuestViewModel @Inject constructor(
     private val repository: GuestRepository
 ): ViewModel() {
+    private val _existeGuest = MutableLiveData<Boolean>()
+    val existeGuest: LiveData<Boolean> = _existeGuest
+
+
     private fun crearUsuario(name: String): Guest{
         return Guest(1, name)
     }
@@ -23,10 +32,10 @@ class GuestViewModel @Inject constructor(
         }
     }
 
-    fun verificarBaseNoEstaVacia(): Boolean {
+    init {
         viewModelScope.launch {
-            
+            _existeGuest.value = repository.verifyDatabase()
         }
-
     }
+
 }
