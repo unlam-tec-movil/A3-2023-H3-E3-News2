@@ -7,7 +7,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -65,11 +67,17 @@ import com.microsoft.appcenter.crashes.Crashes
 import dagger.hilt.android.AndroidEntryPoint
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
-
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import ar.edu.unlam.mobile2.NavegationBottom.ItemMenuDW
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -163,10 +171,19 @@ fun PantallaPrincipal(weatherViewModel: WeatherViewModel, viewModel: NewsViewMod
         ItemsMenu.Pantalla3
     )
 
+    val navigationItemMenuDW = listOf(
+        ItemMenuDW.PantallaGoogle
+    )
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         backgroundColor = MaterialTheme.colorScheme.background,
         scaffoldState = scaffoldState,
+        drawerContent = { drawer(
+            scope,
+            scaffoldState,
+            navController,
+            menu_items = navigationItemMenuDW)},
         content = {
             Column(
                 Modifier
@@ -182,6 +199,13 @@ fun PantallaPrincipal(weatherViewModel: WeatherViewModel, viewModel: NewsViewMod
                             .padding(5.dp)
                             .padding(start = 5.dp),
                     ) {
+                        Icon(imageVector = Icons.Filled.Menu,
+                            contentDescription = "Boton Menu",
+                            tint = Color.White,
+                            modifier = Modifier.clickable { scope.launch { scaffoldState.drawerState.open() } })
+
+                        Spacer(modifier = Modifier.width(10.dp))
+
                         Icon(
                             painter = painterResource(id = R.drawable.unlam_blanco),
                             tint = Color.White,
@@ -192,7 +216,9 @@ fun PantallaPrincipal(weatherViewModel: WeatherViewModel, viewModel: NewsViewMod
                         Text(
                             text = "UNLaM News",
                             color = MaterialTheme.colorScheme.tertiary,
-                            modifier = Modifier.align(CenterVertically)
+                            modifier = Modifier
+                                .align(CenterVertically)
+                                .clickable { navController.navigate("Pantalla1") }
                         )
                     }
                 }
@@ -208,6 +234,58 @@ fun PantallaPrincipal(weatherViewModel: WeatherViewModel, viewModel: NewsViewMod
         bottomBar = { NavegacionInferior(navController, navegationItem,viewModel) },
         floatingActionButton = { BotonFlotante(navController,viewModel) }
     )
+}
+
+@Composable
+fun drawer(
+    scope: CoroutineScope,
+    scaffoldState: ScaffoldState,
+    navController: NavHostController,
+    menu_items: List<ItemMenuDW>){
+
+    Column {
+
+        Image(painterResource(id = R.drawable.noticiasbanner_dw),
+            contentDescription = "Menu de opciones",
+            modifier = Modifier
+                .height(160.dp)
+                .fillMaxWidth(),
+            contentScale = ContentScale.FillWidth)
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
+            .height(15.dp))
+
+        menu_items.forEach{item ->
+            drawerItem(item = item){
+                navController.navigate(item.ruta){
+                    launchSingleTop = true
+                }
+                scope.launch{
+                    scaffoldState.drawerState.close()
+                }
+            }
+        }
+    }
+
+}
+
+@Composable
+fun drawerItem(item: ItemMenuDW, onItemClick: (ItemMenuDW)-> Unit){
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(56.dp)
+            .padding(6.dp)
+            .clip(RoundedCornerShape(12))
+            .padding(8.dp)
+            .clickable { onItemClick(item) }
+    ) {
+        Image(painterResource(id = item.icono),
+            contentDescription = item.titulo)
+        Spacer(modifier = Modifier.width(12.dp))
+        Text(text = item.titulo,
+            style = MaterialTheme.typography.bodyLarge)
+    }
 }
 
 @Composable
