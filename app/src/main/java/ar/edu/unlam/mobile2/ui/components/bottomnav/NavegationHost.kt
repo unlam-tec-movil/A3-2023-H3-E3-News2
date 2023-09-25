@@ -24,8 +24,6 @@ fun NavegationHost(
     guestViewModel: GuestViewModel,
     new: New
 ) {
-
-
     NavHost(
         navController = navHostController,
         startDestination = ItemsMenu.IngresarNombreScreen.ruta,
