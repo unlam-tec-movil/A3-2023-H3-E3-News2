@@ -8,30 +8,21 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Scaffold
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -55,6 +46,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import ar.edu.unlam.mobile2.ui.components.BotonFlotante
+import ar.edu.unlam.mobile2.ui.components.MainTopAppBar
 import ar.edu.unlam.mobile2.ui.components.guest.GuestViewModel
 
 
@@ -98,36 +90,12 @@ fun PantallaPrincipal(weatherViewModel: WeatherViewModel, viewModel: NewsViewMod
         modifier = Modifier.fillMaxSize(),
         backgroundColor = MaterialTheme.colorScheme.background,
         scaffoldState = scaffoldState,
+        topBar = { MainTopAppBar(navController) },
         content = {
             Column(
                 Modifier
                     .fillMaxSize(),
-                /*.verticalScroll(rememberScrollState())*/
             ) {
-                TopAppBar(
-                    backgroundColor = MaterialTheme.colorScheme.background
-                ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(5.dp)
-                            .padding(start = 5.dp),
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.unlam_blanco),
-                            tint = Color.White,
-                            contentDescription = "Logo-Unlam-Blanco",
-                            modifier = Modifier.size(25.dp)
-                        )
-                        Spacer(modifier = Modifier.width(10.dp))
-                        Text(
-                            text = "UNLaM News",
-                            color = MaterialTheme.colorScheme.tertiary,
-                            modifier = Modifier.align(CenterVertically)
-                        )
-                    }
-                }
-
                 NavegationHost(
                     navHostController = navController,
                     weatherViewModel = weatherViewModel,

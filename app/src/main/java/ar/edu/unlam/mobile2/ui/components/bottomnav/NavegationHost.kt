@@ -13,6 +13,7 @@ import ar.edu.unlam.mobile2.domain.mediastack.models.New
 import ar.edu.unlam.mobile2.ui.components.guest.GuestViewModel
 import ar.edu.unlam.mobile2.ui.components.mediastack.NewsViewModel
 import ar.edu.unlam.mobile2.ui.screens.IngresarNombre
+import ar.edu.unlam.mobile2.ui.screens.Settings
 import ar.edu.unlam.mobile2.ui.screens.weather.WeatherViewModel
 
 
@@ -52,6 +53,10 @@ fun NavegationHost(
             viewModel.showItem()
             var new2 = viewModel.resivirNoticia()
             NoticaScreen(new2, navHostController)
+        }
+        composable(ItemsMenu.SettingsScreen.ruta){
+            viewModel.hideItem()
+            Settings(guestViewModel)
         }
     }
 

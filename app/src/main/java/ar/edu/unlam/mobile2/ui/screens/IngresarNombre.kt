@@ -56,7 +56,7 @@ fun IngresarNombreContainer(navHostController: NavHostController, guestViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun MyTextField(navHostController: NavHostController, guestViewModel: GuestViewModel) {
+fun MyTextField(navHostController: NavHostController, guestViewModel: GuestViewModel) {
     var name by remember { mutableStateOf("") }
     var nameError by remember { mutableStateOf(false) }
 

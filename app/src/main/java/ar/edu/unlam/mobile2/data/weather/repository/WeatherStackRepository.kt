@@ -5,7 +5,7 @@ import ar.edu.unlam.mobile2.data.weather.network.WeatherResponse
 class WeatherStackRepository(private val api: WeatherApiService) {
 
     suspend fun getWeatherData(location: String): WeatherResponse {
-        val apiKey = "debabb07ba0c44c04f09ef7eb7846757"
+        val apiKey = "8d692815449ebb14abb97d4562ae4c59"
         return api.getCurrentWeather(apiKey, location)
     }
 }

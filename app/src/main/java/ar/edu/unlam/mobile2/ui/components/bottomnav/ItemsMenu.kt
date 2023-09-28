@@ -15,4 +15,5 @@ sealed class ItemsMenu(
     object Pantalla5 : ItemsMenu(R.drawable.baseline_add_24, "NoticaScreen", "pantalla5")
     object IngresarNombreScreen: ItemsMenu(R.drawable.baseline_add_24, titulo = "IngresarNombreScreen", ruta = "ingresar-nombre-screen")
 
+    object SettingsScreen: ItemsMenu(R.drawable.baseline_add_24, titulo = "SettingsScreen", ruta = "settings-screen")
 }
