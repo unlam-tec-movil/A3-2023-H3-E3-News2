@@ -2,6 +2,7 @@ package ar.edu.unlam.mobile2.NavegationBottom.PantallasPrueba
 
 
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 
@@ -30,6 +31,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -44,11 +46,22 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import ar.edu.unlam.mobile2.R
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.isGranted
+import com.google.accompanist.permissions.rememberPermissionState
+import com.google.accompanist.permissions.shouldShowRationale
 
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalPermissionsApi::class)
 @Composable
 fun Anadir(navController: NavHostController) {
+
+    val permissionState =
+        rememberPermissionState(permission = android.Manifest.permission.CAMERA)
+
+    LaunchedEffect(true){
+        permissionState.launchPermissionRequest()
+    }
 
     var text by remember { mutableStateOf("") }
     var text2 by remember { mutableStateOf("") }
@@ -180,16 +193,23 @@ fun Anadir(navController: NavHostController) {
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.BottomEnd
         ){
-        FloatingActionButton(
+            if (permissionState.status.isGranted){
+                Text(text = "Permiso OK")
+            } else if (permissionState.status.shouldShowRationale) {
+                Text(text = "Mostrar Rational")
+            } else {
+                Text(text = "El permiso fue denegado")
+            }
+
+
+            FloatingActionButton(
             modifier = Modifier
                 .size(100.dp, 100.dp)
                 .padding(16.dp)
                 ,
 
             containerColor = MaterialTheme.colorScheme.primary,
-            onClick = {
-
-            }
+            onClick = { permissionState.launchPermissionRequest()}
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.baseline_camera_alt_24),
@@ -201,6 +221,4 @@ fun Anadir(navController: NavHostController) {
 
 }
 
-
 }
-
