@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -31,14 +32,9 @@ import ar.edu.unlam.mobile2.ui.components.guest.GuestViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun IngresarNombre(navHostController: NavHostController, guestViewModel: GuestViewModel) {
-    val existeGuest by guestViewModel.existeGuest.observeAsState(initial = false)
 
-    Scaffold {
-        if (existeGuest){
-            navHostController.navigate("pantalla1")
-        }else {
-            IngresarNombreContainer(navHostController, guestViewModel)
-        }
+    Scaffold(modifier = Modifier.fillMaxSize()) {
+        IngresarNombreContainer(navHostController, guestViewModel)
     }
 }
 

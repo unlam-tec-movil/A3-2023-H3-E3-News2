@@ -1,6 +1,8 @@
 package ar.edu.unlam.mobile2.ui.components.bottomnav
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -25,11 +27,12 @@ fun NavegationHost(
     guestViewModel: GuestViewModel,
     new: New
 ) {
+    val existeGuest by guestViewModel.existeGuest.observeAsState(initial = false)
+
     NavHost(
         navController = navHostController,
-        startDestination = ItemsMenu.IngresarNombreScreen.ruta,
-
-        ) {
+        startDestination = if (existeGuest) ItemsMenu.Pantalla1.ruta else ItemsMenu.IngresarNombreScreen.ruta
+    ) {
         composable(ItemsMenu.IngresarNombreScreen.ruta) {
             IngresarNombre(navHostController, guestViewModel)
         }
@@ -54,7 +57,7 @@ fun NavegationHost(
             var new2 = viewModel.resivirNoticia()
             NoticaScreen(new2, navHostController)
         }
-        composable(ItemsMenu.SettingsScreen.ruta){
+        composable(ItemsMenu.SettingsScreen.ruta) {
             viewModel.hideItem()
             Settings(guestViewModel)
         }
