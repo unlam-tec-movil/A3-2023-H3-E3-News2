@@ -34,6 +34,7 @@ fun NavegationHost(
         startDestination = if (existeGuest) ItemsMenu.Pantalla1.ruta else ItemsMenu.IngresarNombreScreen.ruta
     ) {
         composable(ItemsMenu.IngresarNombreScreen.ruta) {
+            viewModel.hideItem()
             IngresarNombre(navHostController, guestViewModel)
         }
         composable(ItemsMenu.Pantalla1.ruta) {

@@ -32,7 +32,6 @@ import ar.edu.unlam.mobile2.ui.components.guest.GuestViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun IngresarNombre(navHostController: NavHostController, guestViewModel: GuestViewModel) {
-
     Scaffold(modifier = Modifier.fillMaxSize()) {
         IngresarNombreContainer(navHostController, guestViewModel)
     }

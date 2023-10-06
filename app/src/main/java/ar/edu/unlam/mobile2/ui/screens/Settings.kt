@@ -1,9 +1,11 @@
 package ar.edu.unlam.mobile2.ui.screens
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.ContentAlpha
@@ -18,14 +20,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ar.edu.unlam.mobile2.ui.components.guest.GuestViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun Settings(viewModel: GuestViewModel){
+fun Settings(viewModel: GuestViewModel) {
     Scaffold(
     ) {
         SettingsContainer(viewModel)
@@ -34,35 +38,42 @@ fun Settings(viewModel: GuestViewModel){
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsContainer(viewModel: GuestViewModel,modifier: Modifier = Modifier){
-    Column {
+fun SettingsContainer(viewModel: GuestViewModel, modifier: Modifier = Modifier) {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         var name by remember { mutableStateOf("") }
         var nameError by remember { mutableStateOf(false) }
 
-        Row {
-            TextField(value = name, onValueChange = {
-                name = it
-                nameError = false
-            }, label = { Text("Nombre") }, isError = nameError
-            )
-            val assistiveElementText = if (nameError) "Error: Obligatorio" else "*Obligatorio"
-            val assistiveElementColor = if (nameError) {
-                MaterialTheme.colors.error
-            } else {
-                MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
+
+        Row(modifier = Modifier.fillMaxWidth()) {
+            Column {
+                TextField(value = name, onValueChange = {
+                    name = it
+                    nameError = false
+                }, label = { Text("Nombre") }, isError = nameError
+                )
+                val assistiveElementText = if (nameError) "Error: Obligatorio" else "*Obligatorio"
+                val assistiveElementColor = if (nameError) {
+                    MaterialTheme.colors.error
+                } else {
+                    MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
+                }
+                Text(
+                    text = assistiveElementText,
+                    color = assistiveElementColor,
+                    style = MaterialTheme.typography.caption,
+                    modifier = Modifier.padding(start = 16.dp)
+                )
             }
-            Text(
-                text = assistiveElementText,
-                color = assistiveElementColor,
-                style = MaterialTheme.typography.caption,
-                modifier = Modifier.padding(start = 16.dp)
-            )
-            Spacer(Modifier.size(16.dp))
+
             Button(
                 onClick = {
-                    if (name.isNotBlank()){
+                    if (name.isNotBlank()) {
                         viewModel.actualizarBase(name)
-                    }else{
+                    } else {
                         nameError = name.isBlank()
                     }
                 }
@@ -71,4 +82,12 @@ fun SettingsContainer(viewModel: GuestViewModel,modifier: Modifier = Modifier){
             }
         }
     }
+}
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview(showSystemUi = true)
+@Composable
+private fun SettingsPreview() {
+
 }

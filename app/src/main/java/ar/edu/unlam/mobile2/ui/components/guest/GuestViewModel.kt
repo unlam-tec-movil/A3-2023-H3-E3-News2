@@ -17,7 +17,6 @@ class GuestViewModel @Inject constructor(
     private val _existeGuest = MutableLiveData<Boolean>()
     val existeGuest: LiveData<Boolean> = _existeGuest
 
-
     private fun crearUsuario(name: String): Guest{
         return Guest(1, name)
     }
