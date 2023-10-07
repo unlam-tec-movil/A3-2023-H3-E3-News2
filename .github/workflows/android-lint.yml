@@ -3,10 +3,6 @@ run-name: ${{ github.actor }} protecting code quality! 🛡️
 
 on:
   pull_request:
-    branches:
-      - main
-      - develop
-      - 'releases/**'
     paths:
       - .github/workflows/android-lint.yml
       - '*/src/**'
@@ -31,7 +27,6 @@ jobs:
         with:
           report-path: build/*.xml # Support glob patterns by https://www.npmjs.com/package/@actions/glob
         continue-on-error: false # If annotations contain error of severity, action-ktlint exit 1.
-
   android-lint:
     runs-on: ubuntu-latest
     steps:
