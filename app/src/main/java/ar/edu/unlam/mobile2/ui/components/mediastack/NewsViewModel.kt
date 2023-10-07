@@ -17,13 +17,43 @@ import javax.inject.Inject
 @HiltViewModel
 class NewsViewModel @Inject constructor(
     private val getNews: GetNews,
-    ) : ViewModel() {
+) : ViewModel() {
     private val _listaNoticias = MutableLiveData<List<New>>()
     val listaNoticias: LiveData<List<New>> = _listaNoticias
 
     private var state by mutableStateOf(NewState())
 
-    fun actualizarItem(item: New){
+    fun guardarNoticiaLocal(
+        autor: String? = "null",
+        category: String? = "null",
+        country: String? = "null",
+        description: String? = "null",
+        image: String? = "null",
+        language: String? = "null",
+        publishedAt: String? = "null",
+        source: String? = "null",
+        title: String? = "null",
+        url: String? = "null",
+        saved: Boolean = false,
+    ) {
+        viewModelScope.launch {
+            getNews.createLocalNew(
+                autor,
+                category,
+                country,
+                description,
+                image,
+                language,
+                publishedAt,
+                source,
+                title,
+                url,
+                saved
+            )
+        }
+    }
+
+    fun actualizarItem(item: New) {
         val currentList = _listaNoticias.value.orEmpty().toMutableList()
 
         val index = currentList.indexOfFirst { it.id == item.id }
@@ -33,18 +63,20 @@ class NewsViewModel @Inject constructor(
         actualizarItemEnBase(item)
     }
 
-    fun actualizarItemEnBase(item: New){
+    fun actualizarItemEnBase(item: New) {
         viewModelScope.launch {
             getNews.updateNew(item)
         }
     }
-     var notica: New = New(1,"null","null","null","null","null","null","null","null","null","null",)
+
+    var notica: New =
+        New(1, "null", "null", "null", "null", "null", "null", "null", "null", "null", "null")
 
     fun resivirNoticia(): New {
         return this.notica
     }
 
-    fun enviarNotica(item: New){
+    fun enviarNotica(item: New) {
         this.notica = item
     }
 

@@ -42,108 +42,115 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import ar.edu.unlam.mobile2.R
+import ar.edu.unlam.mobile2.ui.components.mediastack.NewsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Anadir(navController: NavHostController) {
+fun Anadir(navController: NavHostController, viewMode: NewsViewModel) {
 
-    var text by remember { mutableStateOf("") }
-    var text2 by remember { mutableStateOf("") }
-    var text3 by remember { mutableStateOf("") }
-    var text4 by remember { mutableStateOf("") }
+    var text by remember { mutableStateOf("") } //titulo
+    var text2 by remember { mutableStateOf("") } //descripcion
+    var text3 by remember { mutableStateOf("") } //categoria
+    var text4 by remember { mutableStateOf("") } //pais
 
     Column() {
-    TopAppBar(
+        TopAppBar(
+            title = { Text(text = "") },
+            backgroundColor = Color.DarkGray,
+            modifier = Modifier
+                .fillMaxWidth(),
 
-        title = { Text(text = "") },
-        backgroundColor = Color.DarkGray,
-        modifier = Modifier
-            .fillMaxWidth(),
-
-        actions = {
-            Button(
-                onClick = {
-                    // Acción cuando se hace clic en el botón
-                },
-                modifier = Modifier.padding(end = 16.dp) // Espacio entre el botón y el borde derecho
-            ) {
-                Text(text = "publicar")
+            actions = {
+                Button(
+                    onClick = {
+                        viewMode.guardarNoticiaLocal(
+                            autor = "Guest",
+                            title = text,
+                            description = text2,
+                            category = text3,
+                            country = text4
+                        )
+                    },
+                    modifier = Modifier.padding(end = 16.dp) // Espacio entre el botón y el borde derecho
+                ) {
+                    Text(text = "publicar")
+                }
             }
+        )
+        Spacer(modifier = Modifier.height(15.dp))
+        Text(
+            text = "Titulo",
+            color = MaterialTheme.colorScheme.tertiary,
+            modifier = Modifier
+                .padding(start = 16.dp)
+
+        )
+        Spacer(modifier = Modifier.height(5.dp))
+        TextField(
+            value = text,
+            onValueChange = {
+                text = it
+            },
+            label = {
+                Text("Ingrese el Titulo")
+            },
+            modifier = Modifier
+                .padding(16.dp)
+                .size(height = 50.dp, width = 600.dp)
+        )
+        Text(
+            text = "Descripcion",
+            color = MaterialTheme.colorScheme.tertiary,
+            modifier = Modifier
+                .padding(start = 16.dp)
+
+        )
+        Spacer(modifier = Modifier.height(5.dp))
+        TextField(
+            value = text2,
+            onValueChange = {
+                text2 = it
+            },
+            modifier = Modifier
+                .padding(16.dp)
+                .size(height = 130.dp, width = 600.dp)
+        )
+        Row() {
+            Text(
+                text = "Categoria",
+                color = MaterialTheme.colorScheme.tertiary,
+                modifier = Modifier
+                    .padding(start = 16.dp)
+            )
+            Text(
+                text = "Pais",
+                color = MaterialTheme.colorScheme.tertiary,
+                modifier = Modifier
+                    .padding(start = 130.dp)
+            )
+
+
         }
-    )
-    Spacer(modifier = Modifier.height(15.dp))
-    Text(
-        text = "Titulo",
-        color = MaterialTheme.colorScheme.tertiary,
-        modifier = Modifier
-            .padding(start = 16.dp)
-
-    )
-    Spacer(modifier = Modifier.height(5.dp))
-    TextField(
-        value = text,
-        onValueChange = {
-            text = it
-        },
-        label = {
-            Text("Ingrese el Titulo")
-        },
-        modifier = Modifier
-            .padding(16.dp)
-            .size(height = 50.dp, width = 600.dp)
-    )
-    Text(
-        text = "Descripcion",
-        color = MaterialTheme.colorScheme.tertiary,
-        modifier = Modifier
-            .padding(start = 16.dp)
-
-    )
-    Spacer(modifier = Modifier.height(5.dp))
-    TextField(
-        value = text2,
-        onValueChange = {
-            text2 = it
-        },
-        modifier = Modifier
-            .padding(16.dp)
-            .size(height = 130.dp, width = 600.dp)
-    )
-    Row(){
-        Text(
-            text = "Categoria",
-            color = MaterialTheme.colorScheme.tertiary,
-            modifier = Modifier
-                .padding(start = 16.dp))
-        Text(
-            text = "Pais",
-            color = MaterialTheme.colorScheme.tertiary,
-            modifier = Modifier
-                .padding(start = 130.dp))
-
-
-
-    }
-    Row(){
-        TextField(
-            value = text3,
-            onValueChange = {
-                text3 = it
-            },
-            modifier = Modifier
-                .padding(16.dp)
-                .size(height = 50.dp, width = 170.dp)
-        )
-        TextField(
-            value = text4,
-            onValueChange = {
-                text4 = it
-            },
-            modifier = Modifier
-                .padding(16.dp)
-                .size(height = 50.dp, width = 170.dp)
-        )
-    }
+        Row() {
+            TextField(
+                value = text3,
+                onValueChange = {
+                    text3 = it
+                },
+                modifier = Modifier
+                    .padding(16.dp)
+                    .size(height = 50.dp, width = 170.dp)
+            )
+            TextField(
+                value = text4,
+                onValueChange = {
+                    text4 = it
+                },
+                modifier = Modifier
+                    .padding(16.dp)
+                    .size(height = 50.dp, width = 170.dp)
+            )
+        }
         Divider(
             modifier = Modifier
                 .fillMaxWidth()
@@ -153,27 +160,27 @@ fun Anadir(navController: NavHostController) {
         Box(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.BottomEnd
-        ){
-        FloatingActionButton(
-            modifier = Modifier
-                .size(100.dp, 100.dp)
-                .padding(16.dp)
-                ,
+        ) {
+            FloatingActionButton(
+                modifier = Modifier
+                    .size(100.dp, 100.dp)
+                    .padding(16.dp),
 
-            containerColor = MaterialTheme.colorScheme.primary,
-            onClick = {
+                containerColor = MaterialTheme.colorScheme.primary,
+                onClick = {
+
+                }
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.baseline_camera_alt_24),
+                    contentDescription = "Camara",
+                    tint = Color.Black
+                )
 
             }
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.baseline_camera_alt_24),
-                contentDescription = "Camara",
-                tint = Color.Black
-            )
+        }
 
-        }}
-
-}
+    }
 
 
 }

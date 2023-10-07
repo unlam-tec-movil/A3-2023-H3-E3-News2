@@ -10,8 +10,39 @@ class NewRepository(
     private val api: MediastackApi,
     private val dao: NewDao
 ) {
+    suspend fun createLocalNew(
+        autor: String? = "null",
+        category: String? = "",
+        country: String? = "null",
+        description: String? = "null",
+        image: String? = "null",
+        language: String? = "null",
+        publishedAt: String? = "null",
+        source: String? = "null",
+        title: String? = "null",
+        url: String? = "null",
+        saved: Boolean = false,
+    ) {
+        val newsListSize = dao.getNews().size
+        val noticiaCreada = New(
+            id = newsListSize + 1,
+            author = autor,
+            category = category,
+            country = country,
+            description = description,
+            image = image,
+            language = language,
+            publishedAt = publishedAt,
+            source = source,
+            title = title,
+            url = url,
+            saved = saved
+        )
 
-    suspend fun updateNewInDatabase(new: New){
+        updateNewInDatabase(noticiaCreada)
+    }
+
+    suspend fun updateNewInDatabase(new: New) {
         dao.insertNew(new.toEntity())
     }
 
@@ -20,7 +51,7 @@ class NewRepository(
 
         val newsFromApi = getNewsFromApi()
 
-        if(localNews != newsFromApi){
+        if (localNews != newsFromApi) {
             newsFromApi.forEach {
                 dao.insertNew(it.toEntity())
             }

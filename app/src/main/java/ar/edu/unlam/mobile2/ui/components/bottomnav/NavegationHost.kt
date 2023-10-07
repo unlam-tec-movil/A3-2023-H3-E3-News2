@@ -51,11 +51,11 @@ fun NavegationHost(
         }
         composable(ItemsMenu.Pantalla4.ruta) {
             viewModel.hideItem()
-            Anadir(navHostController)
+            Anadir(navHostController, viewModel)
         }
         composable(ItemsMenu.Pantalla5.ruta) {
             viewModel.showItem()
-            var new2 = viewModel.resivirNoticia()
+            val new2 = viewModel.resivirNoticia()
             NoticaScreen(new2, navHostController)
         }
         composable(ItemsMenu.SettingsScreen.ruta) {
