@@ -15,6 +15,7 @@ import ar.edu.unlam.mobile2.domain.mediastack.models.New
 import ar.edu.unlam.mobile2.ui.components.guest.GuestViewModel
 import ar.edu.unlam.mobile2.ui.components.mediastack.NewsViewModel
 import ar.edu.unlam.mobile2.ui.screens.IngresarNombre
+import ar.edu.unlam.mobile2.ui.screens.MySplashScreen
 import ar.edu.unlam.mobile2.ui.screens.Settings
 import ar.edu.unlam.mobile2.ui.screens.weather.WeatherViewModel
 
@@ -31,7 +32,7 @@ fun NavegationHost(
 
     NavHost(
         navController = navHostController,
-        startDestination = if (existeGuest) ItemsMenu.Pantalla1.ruta else ItemsMenu.IngresarNombreScreen.ruta
+        startDestination = ItemsMenu.SplashScreen.ruta
     ) {
         composable(ItemsMenu.IngresarNombreScreen.ruta) {
             viewModel.hideItem()
@@ -61,6 +62,13 @@ fun NavegationHost(
         composable(ItemsMenu.SettingsScreen.ruta) {
             viewModel.hideItem()
             Settings(guestViewModel)
+        }
+        composable(ItemsMenu.SplashScreen.ruta) {
+            MySplashScreen(
+                navigate = {
+                    navHostController.navigate(if (existeGuest) ItemsMenu.Pantalla1.ruta else ItemsMenu.IngresarNombreScreen.ruta)
+                }
+            )
         }
     }
 

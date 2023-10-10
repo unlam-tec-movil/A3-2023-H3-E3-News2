@@ -16,4 +16,5 @@ sealed class ItemsMenu(
     object IngresarNombreScreen: ItemsMenu(R.drawable.baseline_add_24, titulo = "IngresarNombreScreen", ruta = "ingresar-nombre-screen")
 
     object SettingsScreen: ItemsMenu(R.drawable.baseline_add_24, titulo = "SettingsScreen", ruta = "settings-screen")
+    object SplashScreen: ItemsMenu(R.drawable.unlam_blanco, titulo = "SplashScreen", ruta = "splash-screen")
 }
