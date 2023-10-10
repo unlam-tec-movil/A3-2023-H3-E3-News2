@@ -1,10 +1,10 @@
-package ar.edu.unlam.mobile2.mediastackapi.data
+package ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data
 
 import ar.edu.unlam.mobile2.mediastackapi.New
-import ar.edu.unlam.mobile2.mediastackapi.data.api.MediastackApi
-import ar.edu.unlam.mobile2.mediastackapi.data.local.NewDao
-import ar.edu.unlam.mobile2.mediastackapi.data.mapper.toDomain
-import ar.edu.unlam.mobile2.mediastackapi.data.mapper.toEntity
+import ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data.api.MediastackApi
+import ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data.local.NewDao
+import ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data.mapper.toDomain
+import ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data.mapper.toEntity
 import java.lang.Exception
 
 class NewRepository(

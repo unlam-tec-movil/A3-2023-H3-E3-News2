@@ -3,10 +3,10 @@ package ar.edu.unlam.mobile2
 import android.app.Application
 import androidx.room.Room
 import ar.edu.unlam.mobile2.mediastackapi.GetNews
-import ar.edu.unlam.mobile2.mediastackapi.data.api.MediastackApi
-import ar.edu.unlam.mobile2.mediastackapi.data.NewRepository
-import ar.edu.unlam.mobile2.mediastackapi.data.local.NewDao
-import ar.edu.unlam.mobile2.mediastackapi.data.local.NewDatabase
+import ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data.api.MediastackApi
+import ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data.NewRepository
+import ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data.local.NewDao
+import ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data.local.NewDatabase
 import ar.edu.unlam.mobile2.weatherapi.repository.WeatherApiService
 import ar.edu.unlam.mobile2.weatherapi.repository.WeatherStackRepository
 import dagger.Module
@@ -32,7 +32,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNewDao(application: Application): NewDao{
+    fun provideNewDao(application: Application): NewDao {
         val db = Room.databaseBuilder(application, NewDatabase::class.java,"news_db").build()
         return db.dao
     }

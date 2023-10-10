@@ -1,8 +1,8 @@
-package ar.edu.unlam.mobile2.mediastackapi.ui
+package ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.ui
 
 
 import android.util.Log
-import androidx.compose.foundation.BorderStroke
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CornerBasedShape
+
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Surface
@@ -23,7 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextOverflow
+
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ar.edu.unlam.mobile.scaffold.R
@@ -55,7 +55,7 @@ fun ArticleCard() {
                         color = Color.White
                     )
                     //Boton Favoritos
-                    Row() {
+                    Row {
                         IconButton(onClick = {
                             Log.d("Click marcador", "Se clickeó el boton de marcadores")
                         }) {
@@ -163,67 +163,6 @@ fun NewDesign(
         }
     }
 
-}
-
-@Composable
-fun NewDesign2(
-    noticia: New,
-    onItemClick: (New) -> Unit,
-    onItemClick2: (New) -> Unit,
-    modifier: Modifier = Modifier,
-    border: BorderStroke? = null,
-    shape: CornerBasedShape = MaterialTheme.shapes.medium
-) {
-    Card(
-        modifier = modifier
-            .padding(10.dp)
-            .clickable { onItemClick2(noticia) },
-        border = border,
-        shape = shape
-    ) {
-        //Contenedor
-        Column(modifier = modifier.padding(10.dp)) {
-            //Source
-            Text(text = noticia.source!!, style = MaterialTheme.typography.bodyMedium)
-            //Titulo
-            Text(
-                text = noticia.title!!, style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier
-            )
-            //Descripción
-            Text(
-                text = noticia.description!!,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-                style = MaterialTheme.typography.bodyMedium,
-            )
-            //Boton Favoritos
-            Row(modifier = Modifier.align(Alignment.End)) {
-                IconButton(onClick = {
-                    Log.d("Click marcador", "Se clickeó el boton de marcadores")
-                    onItemClick(noticia.copy(saved = enviarBoolean(noticia)))
-                }) {
-                    Icon(
-                        painter = if (!noticia.saved) {
-                            painterResource(id = R.drawable.baseline_bookmark_border_24)
-                        } else {
-                            painterResource(id = R.drawable.baseline_bookmark_24)
-                        }, contentDescription = null
-                    )
-                }
-
-                Text(
-                    text = if (!noticia.saved) {
-                        "Agregar a marcadores"
-                    } else {
-                        "Quitar de marcadores"
-                    },
-                    style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.align(Alignment.CenterVertically)
-                )
-            }
-        }
-    }
 }
 
 

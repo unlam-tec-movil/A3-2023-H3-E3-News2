@@ -14,7 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
-import ar.edu.unlam.mobile2.NavegationBottom.PantallasPrueba.NavegationHost
+import ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.ui.NewDesign
 
 
 import ar.edu.unlam.mobile2.mediastackapi.viewmodel.NewsViewModel

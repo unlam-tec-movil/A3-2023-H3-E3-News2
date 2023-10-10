@@ -1,6 +1,6 @@
-package ar.edu.unlam.mobile2.mediastackapi.data.api
+package ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data.api
 
-import ar.edu.unlam.mobile2.mediastackapi.data.api.response.NewsResponse
+import ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data.api.response.NewsResponse
 import retrofit2.http.GET
 
 interface MediastackApi {

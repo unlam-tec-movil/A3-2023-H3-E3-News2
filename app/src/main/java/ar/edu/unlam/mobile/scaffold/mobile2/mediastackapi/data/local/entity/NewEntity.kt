@@ -1,6 +1,5 @@
-package ar.edu.unlam.mobile2.mediastackapi.data.local.entity
+package ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data.local.entity
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 

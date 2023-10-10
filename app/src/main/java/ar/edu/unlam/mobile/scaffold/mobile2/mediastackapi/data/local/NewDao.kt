@@ -1,10 +1,10 @@
-package ar.edu.unlam.mobile2.mediastackapi.data.local
+package ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data.local
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import ar.edu.unlam.mobile2.mediastackapi.data.local.entity.NewEntity
+import ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data.local.entity.NewEntity
 
 @Dao
 interface NewDao {
