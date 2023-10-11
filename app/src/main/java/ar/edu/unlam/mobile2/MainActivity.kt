@@ -1,6 +1,8 @@
 package ar.edu.unlam.mobile2
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.hardware.camera2.CameraManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 
@@ -97,11 +99,12 @@ fun PantallaPrincipal(weatherViewModel: WeatherViewModel, viewModel: NewsViewMod
                     .fillMaxSize(),
             ) {
                 NavegationHost(
+
                     navHostController = navController,
                     weatherViewModel = weatherViewModel,
                     viewModel = viewModel,
                     guestViewModel = guestViewModel,
-                    new = viewModel.resivirNoticia()
+
                 )
             }
         },

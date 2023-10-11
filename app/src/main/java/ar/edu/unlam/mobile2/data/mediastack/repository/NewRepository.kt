@@ -12,7 +12,7 @@ class NewRepository(
 ) {
     suspend fun createLocalNew(
         autor: String? = "null",
-        category: String? = "",
+        category: String? = "null",
         country: String? = "null",
         description: String? = "null",
         image: String? = "null",

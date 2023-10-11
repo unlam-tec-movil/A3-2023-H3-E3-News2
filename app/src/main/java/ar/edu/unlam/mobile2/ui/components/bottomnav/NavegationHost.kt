@@ -1,5 +1,6 @@
 package ar.edu.unlam.mobile2.ui.components.bottomnav
 
+import android.hardware.camera2.CameraManager
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -25,7 +26,7 @@ fun NavegationHost(
     weatherViewModel: WeatherViewModel,
     viewModel: NewsViewModel,
     guestViewModel: GuestViewModel,
-    new: New
+
 ) {
     val existeGuest by guestViewModel.existeGuest.observeAsState(initial = false)
 
