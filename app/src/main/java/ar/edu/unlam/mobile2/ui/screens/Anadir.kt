@@ -78,7 +78,7 @@ fun Anadir(navHostController: NavHostController, viewMode: NewsViewModel) {
     var categoria by remember { mutableStateOf("") } //categoria
     var pais by remember { mutableStateOf("") } //pais
 
-    // Variable de estado para la imagen capturada.
+    //Aca implemente la variable de estado para la imagen capturada.
     var capturedImage by remember { mutableStateOf<Bitmap?>(null) }
 
     // Variable para verificar si se han otorgado permisos de cámara.
@@ -91,8 +91,7 @@ fun Anadir(navHostController: NavHostController, viewMode: NewsViewModel) {
         if (isGranted) {
             hasCameraPermission = true
         } else {
-            // Aquí puedes manejar el caso en el que el usuario no otorga los permisos de cámara.
-            // Puedes mostrar un mensaje de error o realizar otra acción.
+            // Aquí podemos manejar el caso en el que el usuario no otorga los permisos de cámara
         }
     }
 
@@ -111,7 +110,7 @@ fun Anadir(navHostController: NavHostController, viewMode: NewsViewModel) {
     // Crear un launcher para capturar imágenes
     val captureImageLauncher = rememberLauncherForActivityResult(ActivityResultContracts.TakePicture()) { success ->
         if (success) {
-            // La imagen se capturó con éxito, ahora puedes procesarla.
+            // La imagen se capturó con éxito, ahora procesarla.
             capturedImageUri?.let { uri ->
                 // Accede a la imagen en uri y guárdala en capturedImage
                 val bitmap = MediaStore.Images.Media.getBitmap(context.contentResolver, uri)
@@ -223,15 +222,15 @@ fun Anadir(navHostController: NavHostController, viewMode: NewsViewModel) {
                         .size(height = 50.dp, width = 170.dp)
                 )
             }
-            // Agrega otros elementos aquí como TextField y Text
+
             Divider(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(1.dp),
-                color = Color.Gray // Puedes personalizar el color de la línea
+                color = Color.Gray
             )
 
-            // Mostrar la imagen capturada, si existe.
+            // Mostramos la imagen capturada, si existe.
             capturedImage?.let { image ->
                 Image(
                     bitmap = image.asImageBitmap(),
@@ -260,8 +259,8 @@ fun Anadir(navHostController: NavHostController, viewMode: NewsViewModel) {
                     val imageFile = createImageFile(context)
                     capturedImageUri = FileProvider.getUriForFile(context, capturedImageFileProvider, imageFile)
                     captureImageLauncher.launch(capturedImageUri)
-                    // Implementa aquí la lógica para abrir la cámara y tomar una foto.
-                    // Asegúrate de guardar la imagen capturada en capturedImage.
+                    // Implementamos aquí la lógica para abrir la cámara y tomar una foto.
+                    // Nos aseguramos de guardar la imagen capturada en capturedImage.
                 } else {
                     // Si no se han otorgado permisos, solicitarlos.
                     requestCameraPermission()
@@ -282,7 +281,7 @@ fun Anadir(navHostController: NavHostController, viewMode: NewsViewModel) {
 
 
 }
-
+//funcion para crear el archivo de la imagen
 private fun createImageFile(context: Context): File {
     val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
     val storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
