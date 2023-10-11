@@ -12,6 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-
-rootProject.name = "Mobile Scaffolding"
+rootProject.name = "Mobile2_Scaffolding"
 include ':app'
