@@ -1,8 +1,6 @@
 package ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.ui
 
-
 import android.util.Log
-
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,7 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Surface
@@ -23,7 +20,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ar.edu.unlam.mobile.scaffold.R
@@ -40,21 +36,23 @@ fun ArticleCard() {
             Card(
                 modifier = modifier.padding(5.dp),
                 backgroundColor = MaterialTheme.colorScheme.onBackground,
-                shape = CutCornerShape(1.dp)
+                shape = CutCornerShape(1.dp),
             ) {
-                //Contenedor
+                // Contenedor
                 Column(modifier = modifier.padding(5.dp)) {
-                    //Source
+                    // Source
                     Text(
-                        text = "Source", style = MaterialTheme.typography.bodyMedium,
-                        color = Color.White
+                        text = "Source",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = Color.White,
                     )
-                    //Titulo
+                    // Titulo
                     Text(
-                        text = "Titulo", style = MaterialTheme.typography.titleLarge,
-                        color = Color.White
+                        text = "Titulo",
+                        style = MaterialTheme.typography.titleLarge,
+                        color = Color.White,
                     )
-                    //Boton Favoritos
+                    // Boton Favoritos
                     Row {
                         IconButton(onClick = {
                             Log.d("Click marcador", "Se clickeó el boton de marcadores")
@@ -63,7 +61,7 @@ fun ArticleCard() {
                                 painter =
                                 painterResource(id = R.drawable.baseline_bookmark_border_24),
                                 tint = Color.White,
-                                contentDescription = null
+                                contentDescription = null,
                             )
                         }
 
@@ -71,27 +69,24 @@ fun ArticleCard() {
                             "Agregar a marcadores",
                             style = MaterialTheme.typography.bodyMedium,
                             modifier = Modifier.align(Alignment.CenterVertically),
-                            color = Color.White
+                            color = Color.White,
                         )
                     }
                 }
-                //Borde de arriba
+                // Borde de arriba
                 Surface(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(5.dp),
-                    color = MaterialTheme.colorScheme.primary
+                    color = MaterialTheme.colorScheme.primary,
                 ) {}
             }
-
         }
-
-
     }
 }
 
-//noticia.source!!
-//noticia.title!!
+// noticia.source!!
+// noticia.title!!
 
 @Composable
 fun NewDesign(
@@ -106,28 +101,30 @@ fun NewDesign(
                 .padding(10.dp)
                 .clickable { onItemClick2(noticia) },
             backgroundColor = MaterialTheme.colorScheme.onBackground,
-            shape = CutCornerShape(1.dp)
+            shape = CutCornerShape(1.dp),
         ) {
-            //Contenedor
+            // Contenedor
             Column(modifier = modifier.padding(5.dp)) {
-                //Source
+                // Source
                 Text(
-                    text = noticia.source!!, style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.tertiary
+                    text = noticia.source!!,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.tertiary,
                 )
-                //Titulo
+                // Titulo
                 Text(
-                    text = noticia.title!!, style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.tertiary
+                    text = noticia.title!!,
+                    style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.tertiary,
                 )
-                //Descripción
+                // Descripción
                 /*Text(
                     text = noticia.description!!,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.bodyMedium,
                 )*/
-                //Boton Favoritos
+                // Boton Favoritos
                 Row(modifier = Modifier.align(Alignment.End)) {
                     IconButton(onClick = {
                         Log.d("Click marcador", "Se clickeó el boton de marcadores")
@@ -138,7 +135,9 @@ fun NewDesign(
                                 painterResource(id = R.drawable.baseline_bookmark_border_24)
                             } else {
                                 painterResource(id = R.drawable.baseline_bookmark_24)
-                            }, contentDescription = null, tint = MaterialTheme.colorScheme.primary
+                            },
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary,
                         )
                     }
 
@@ -150,7 +149,7 @@ fun NewDesign(
                         },
                         style = MaterialTheme.typography.bodyMedium,
                         modifier = Modifier.align(Alignment.CenterVertically),
-                        color = MaterialTheme.colorScheme.tertiary
+                        color = MaterialTheme.colorScheme.tertiary,
                     )
                 }
             }
@@ -158,16 +157,12 @@ fun NewDesign(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(5.dp),
-                color = MaterialTheme.colorScheme.primary
+                color = MaterialTheme.colorScheme.primary,
             ) {}
         }
     }
-
 }
-
 
 private fun enviarBoolean(noticia: New): Boolean {
     return !noticia.saved
 }
-
-

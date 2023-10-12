@@ -1,6 +1,5 @@
 package ar.edu.unlam.mobile2.weatherapi.data
 
-
 import com.google.gson.annotations.SerializedName
 
 data class Request(
@@ -11,5 +10,5 @@ data class Request(
     @SerializedName("type")
     val type: String,
     @SerializedName("unit")
-    val unit: String
+    val unit: String,
 )

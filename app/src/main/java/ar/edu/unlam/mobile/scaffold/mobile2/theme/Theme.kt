@@ -17,7 +17,7 @@ import androidx.core.view.WindowCompat
 private val DarkColorScheme = darkColorScheme(
     primary = Green,
     secondary = DarkGreen,
-    background = DarkGray
+    background = DarkGray,
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -25,7 +25,7 @@ private val LightColorScheme = lightColorScheme(
     secondary = DarkGreen,
     tertiary = LightGray,
     background = DarkGray,
-    onBackground = Gray
+    onBackground = Gray,
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -35,7 +35,7 @@ private val LightColorScheme = lightColorScheme(
     onTertiary = Color.White,
     onBackground = Color(0xFF1C1B1F),
     onSurface = Color(0xFF1C1B1F),
-    */
+     */
 )
 
 @Composable
@@ -43,7 +43,7 @@ fun Mobile2_ScaffoldingTheme(
     darkTheme: Boolean = false,
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
@@ -66,7 +66,6 @@ fun Mobile2_ScaffoldingTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
-        content = content
+        content = content,
     )
 }
-

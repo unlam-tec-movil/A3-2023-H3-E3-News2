@@ -1,18 +1,18 @@
 package ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data
 
-import ar.edu.unlam.mobile2.mediastackapi.New
 import ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data.api.MediastackApi
 import ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data.local.NewDao
 import ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data.mapper.toDomain
 import ar.edu.unlam.mobile.scaffold.mobile2.mediastackapi.data.mapper.toEntity
+import ar.edu.unlam.mobile2.mediastackapi.New
 import java.lang.Exception
 
 class NewRepository(
     private val api: MediastackApi,
-    private val dao: NewDao
+    private val dao: NewDao,
 ) {
 
-    suspend fun updateNewInDatabase(new: New){
+    suspend fun updateNewInDatabase(new: New) {
         dao.insertNew(new.toEntity())
     }
 
@@ -21,7 +21,7 @@ class NewRepository(
 
         val newsFromApi = getNewsFromApi()
 
-        if(localNews != newsFromApi){
+        if (localNews != newsFromApi) {
             newsFromApi.forEach {
                 dao.insertNew(it.toEntity())
             }

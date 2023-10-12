@@ -6,5 +6,5 @@ data class NewsResponse(
     @Query("data")
     val data: List<Data>,
     @Query("pagination")
-    val pagination: Pagination
+    val pagination: Pagination,
 )
