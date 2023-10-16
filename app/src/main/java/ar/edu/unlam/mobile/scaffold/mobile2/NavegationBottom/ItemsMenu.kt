@@ -1,4 +1,4 @@
-package ar.edu.unlam.mobile2.NavegationBottom
+package ar.edu.unlam.mobile2.NavegationBottom // ktlint-disable package-name
 
 import ar.edu.unlam.mobile.scaffold.R
 

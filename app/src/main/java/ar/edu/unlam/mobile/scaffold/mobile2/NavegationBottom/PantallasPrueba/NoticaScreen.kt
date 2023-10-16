@@ -1,4 +1,4 @@
-package ar.edu.unlam.mobile2.NavegationBottom.PantallasPrueba
+package ar.edu.unlam.mobile2.NavegationBottom.PantallasPrueba // ktlint-disable package-name
 
 import android.annotation.SuppressLint
 import android.content.Context

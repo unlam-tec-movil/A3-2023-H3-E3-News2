@@ -1,4 +1,5 @@
-package ar.edu.unlam.mobile2.NavegationBottom.PantallasPrueba
+package ar.edu.unlam.mobile2.NavegationBottom.PantallasPrueba // ktlint-disable package-name
+// ktlint-disable package-name
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
