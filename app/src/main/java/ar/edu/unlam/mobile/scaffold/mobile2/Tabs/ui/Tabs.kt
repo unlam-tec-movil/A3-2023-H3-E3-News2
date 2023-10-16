@@ -34,19 +34,18 @@ fun Tabs(tabs: List<Tabs_item>, pagerState: PagerState) {
                 onClick = { scope.launch { pagerState.animateScrollToPage(index) } },
                 text = { Text(tabsItem.title, color = MaterialTheme.colorScheme.tertiary) },
             )
-
-            /*
-            LeadingIconTab(
-                selected = pagerState.currentPage == index,
-                onClick = { scope.launch { pagerState.animateScrollToPage(index) } },
-                icon = {
-                    Icon(
-                        painter = painterResource(id = tabsItem.icon),
-                        contentDescription = "",
-
-                        )
-                },
-                text = { Text(tabsItem.title) })*/
         }
     }
 }
+/*
+           LeadingIconTab(
+               selected = pagerState.currentPage == index,
+               onClick = { scope.launch { pagerState.animateScrollToPage(index) } },
+               icon = {
+                   Icon(
+                       painter = painterResource(id = tabsItem.icon),
+                       contentDescription = "",
+
+                       )
+               },
+               text = { Text(tabsItem.title) })*/

@@ -31,7 +31,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.* // ktlint-disable no-wildcard-imports
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.* // ktlint-disable no-wildcard-imports
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
@@ -138,7 +137,6 @@ fun MyPreview() {
 fun PantallaPrincipal(weatherViewModel: WeatherViewModel, viewModel: NewsViewModel) {
     val navController = rememberNavController()
     val scaffoldState = rememberScaffoldState()
-    val scope = rememberCoroutineScope()
 
     val navegationItem = listOf(
         ItemsMenu.Pantalla1,
