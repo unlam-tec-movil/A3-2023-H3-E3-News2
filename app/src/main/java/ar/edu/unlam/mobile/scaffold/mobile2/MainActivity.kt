@@ -131,7 +131,6 @@ fun MyPreview() {
 }
 
  */
-
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun PantallaPrincipal(weatherViewModel: WeatherViewModel, viewModel: NewsViewModel) {
