@@ -1,6 +1,5 @@
 package ar.edu.unlam.mobile2.mediastackapi.ui
 
-
 import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
@@ -40,21 +39,23 @@ fun ArticleCard() {
             Card(
                 modifier = modifier.padding(5.dp),
                 backgroundColor = MaterialTheme.colorScheme.onBackground,
-                shape = CutCornerShape(1.dp)
+                shape = CutCornerShape(1.dp),
             ) {
-                //Contenedor
+                // Contenedor
                 Column(modifier = modifier.padding(5.dp)) {
-                    //Source
+                    // Source
                     Text(
-                        text = "Source", style = MaterialTheme.typography.bodyMedium,
-                        color = Color.White
+                        text = "Source",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = Color.White,
                     )
-                    //Titulo
+                    // Titulo
                     Text(
-                        text = "Titulo", style = MaterialTheme.typography.titleLarge,
-                        color = Color.White
+                        text = "Titulo",
+                        style = MaterialTheme.typography.titleLarge,
+                        color = Color.White,
                     )
-                    //Boton Favoritos
+                    // Boton Favoritos
                     Row() {
                         IconButton(onClick = {
                             Log.d("Click marcador", "Se clickeó el boton de marcadores")
@@ -63,7 +64,7 @@ fun ArticleCard() {
                                 painter =
                                 painterResource(id = R.drawable.baseline_bookmark_border_24),
                                 tint = Color.White,
-                                contentDescription = null
+                                contentDescription = null,
                             )
                         }
 
@@ -71,27 +72,24 @@ fun ArticleCard() {
                             "Agregar a marcadores",
                             style = MaterialTheme.typography.bodyMedium,
                             modifier = Modifier.align(Alignment.CenterVertically),
-                            color = Color.White
+                            color = Color.White,
                         )
                     }
                 }
-                //Borde de arriba
+                // Borde de arriba
                 Surface(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(5.dp),
-                    color = MaterialTheme.colorScheme.primary
+                    color = MaterialTheme.colorScheme.primary,
                 ) {}
             }
-
         }
-
-
     }
 }
 
-//noticia.source!!
-//noticia.title!!
+// noticia.source!!
+// noticia.title!!
 
 @Composable
 fun NewDesign(
@@ -106,28 +104,30 @@ fun NewDesign(
                 .padding(10.dp)
                 .clickable { onItemClick2(noticia) },
             backgroundColor = MaterialTheme.colorScheme.onBackground,
-            shape = CutCornerShape(1.dp)
+            shape = CutCornerShape(1.dp),
         ) {
-            //Contenedor
+            // Contenedor
             Column(modifier = modifier.padding(5.dp)) {
-                //Source
+                // Source
                 Text(
-                    text = noticia.source!!, style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.tertiary
+                    text = noticia.source!!,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.tertiary,
                 )
-                //Titulo
+                // Titulo
                 Text(
-                    text = noticia.title!!, style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.tertiary
+                    text = noticia.title!!,
+                    style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.tertiary,
                 )
-                //Descripción
+                // Descripción
                 /*Text(
                     text = noticia.description!!,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.bodyMedium,
                 )*/
-                //Boton Favoritos
+                // Boton Favoritos
                 Row(modifier = Modifier.align(Alignment.End)) {
                     IconButton(onClick = {
                         Log.d("Click marcador", "Se clickeó el boton de marcadores")
@@ -138,7 +138,9 @@ fun NewDesign(
                                 painterResource(id = R.drawable.baseline_bookmark_border_24)
                             } else {
                                 painterResource(id = R.drawable.baseline_bookmark_24)
-                            }, contentDescription = null, tint = MaterialTheme.colorScheme.primary
+                            },
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary,
                         )
                     }
 
@@ -150,7 +152,7 @@ fun NewDesign(
                         },
                         style = MaterialTheme.typography.bodyMedium,
                         modifier = Modifier.align(Alignment.CenterVertically),
-                        color = MaterialTheme.colorScheme.tertiary
+                        color = MaterialTheme.colorScheme.tertiary,
                     )
                 }
             }
@@ -158,11 +160,10 @@ fun NewDesign(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(5.dp),
-                color = MaterialTheme.colorScheme.primary
+                color = MaterialTheme.colorScheme.primary,
             ) {}
         }
     }
-
 }
 
 @Composable
@@ -172,32 +173,33 @@ fun NewDesign2(
     onItemClick2: (New) -> Unit,
     modifier: Modifier = Modifier,
     border: BorderStroke? = null,
-    shape: CornerBasedShape = MaterialTheme.shapes.medium
+    shape: CornerBasedShape = MaterialTheme.shapes.medium,
 ) {
     Card(
         modifier = modifier
             .padding(10.dp)
             .clickable { onItemClick2(noticia) },
         border = border,
-        shape = shape
+        shape = shape,
     ) {
-        //Contenedor
+        // Contenedor
         Column(modifier = modifier.padding(10.dp)) {
-            //Source
+            // Source
             Text(text = noticia.source!!, style = MaterialTheme.typography.bodyMedium)
-            //Titulo
+            // Titulo
             Text(
-                text = noticia.title!!, style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier
+                text = noticia.title!!,
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier,
             )
-            //Descripción
+            // Descripción
             Text(
                 text = noticia.description!!,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
                 style = MaterialTheme.typography.bodyMedium,
             )
-            //Boton Favoritos
+            // Boton Favoritos
             Row(modifier = Modifier.align(Alignment.End)) {
                 IconButton(onClick = {
                     Log.d("Click marcador", "Se clickeó el boton de marcadores")
@@ -208,7 +210,8 @@ fun NewDesign2(
                             painterResource(id = R.drawable.baseline_bookmark_border_24)
                         } else {
                             painterResource(id = R.drawable.baseline_bookmark_24)
-                        }, contentDescription = null
+                        },
+                        contentDescription = null,
                     )
                 }
 
@@ -219,16 +222,13 @@ fun NewDesign2(
                         "Quitar de marcadores"
                     },
                     style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.align(Alignment.CenterVertically)
+                    modifier = Modifier.align(Alignment.CenterVertically),
                 )
             }
         }
     }
 }
 
-
 private fun enviarBoolean(noticia: New): Boolean {
     return !noticia.saved
 }
-
-

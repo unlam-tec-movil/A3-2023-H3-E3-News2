@@ -9,10 +9,10 @@ import java.lang.Exception
 
 class NewRepository(
     private val api: MediastackApi,
-    private val dao: NewDao
+    private val dao: NewDao,
 ) {
 
-    suspend fun updateNewInDatabase(new: New){
+    suspend fun updateNewInDatabase(new: New) {
         dao.insertNew(new.toEntity())
     }
 
@@ -21,7 +21,7 @@ class NewRepository(
 
         val newsFromApi = getNewsFromApi()
 
-        if(localNews != newsFromApi){
+        if (localNews != newsFromApi) {
             newsFromApi.forEach {
                 dao.insertNew(it.toEntity())
             }

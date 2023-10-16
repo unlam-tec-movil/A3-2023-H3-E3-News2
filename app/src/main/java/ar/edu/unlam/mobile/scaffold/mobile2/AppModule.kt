@@ -3,8 +3,8 @@ package ar.edu.unlam.mobile2
 import android.app.Application
 import androidx.room.Room
 import ar.edu.unlam.mobile2.mediastackapi.GetNews
-import ar.edu.unlam.mobile2.mediastackapi.data.api.MediastackApi
 import ar.edu.unlam.mobile2.mediastackapi.data.NewRepository
+import ar.edu.unlam.mobile2.mediastackapi.data.api.MediastackApi
 import ar.edu.unlam.mobile2.mediastackapi.data.local.NewDao
 import ar.edu.unlam.mobile2.mediastackapi.data.local.NewDatabase
 import ar.edu.unlam.mobile2.weatherapi.repository.WeatherApiService
@@ -21,19 +21,19 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-    //Mediastack Api
+    // Mediastack Api
     @Provides
     @Singleton
     fun provideMediaStackApi(): MediastackApi {
         return Retrofit.Builder().baseUrl("http://api.mediastack.com/")
-                .addConverterFactory(GsonConverterFactory.create()).client(OkHttpClient.Builder().build())
-                .build().create(MediastackApi::class.java)
+            .addConverterFactory(GsonConverterFactory.create()).client(OkHttpClient.Builder().build())
+            .build().create(MediastackApi::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideNewDao(application: Application): NewDao{
-        val db = Room.databaseBuilder(application, NewDatabase::class.java,"news_db").build()
+    fun provideNewDao(application: Application): NewDao {
+        val db = Room.databaseBuilder(application, NewDatabase::class.java, "news_db").build()
         return db.dao
     }
 
@@ -45,15 +45,15 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideGetCharacters(repository: NewRepository): GetNews{
+    fun provideGetCharacters(repository: NewRepository): GetNews {
         return GetNews(repository)
     }
 
-    //Weather Api
+    // Weather Api
 
     @Provides
     @Singleton
-    fun provideWeatherApi (): WeatherApiService {
+    fun provideWeatherApi(): WeatherApiService {
         return Retrofit.Builder()
             .baseUrl("http://api.weatherstack.com/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -63,7 +63,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideWeatherRepository (api: WeatherApiService): WeatherStackRepository {
+    fun provideWeatherRepository(api: WeatherApiService): WeatherStackRepository {
         return WeatherStackRepository(api)
     }
 }

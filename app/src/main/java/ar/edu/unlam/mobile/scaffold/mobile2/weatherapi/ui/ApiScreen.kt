@@ -38,35 +38,32 @@ fun MyWeatherPreview() {
                     .padding()
                     .align(Alignment.TopEnd),
                 backgroundColor = MaterialTheme.colorScheme.background.copy(alpha = 0.8f),
-                shape = CutCornerShape(1.dp)
+                shape = CutCornerShape(1.dp),
             ) {
                 Row(
                     modifier = Modifier.padding(1.dp),
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
+                    horizontalArrangement = Arrangement.Center,
                 ) {
                     if (weatherData == null) {
                         Spacer(modifier = Modifier.width(10.dp))
                         Text(
                             text = "${10}°c",
-                            color = Color.White
+                            color = Color.White,
                         )
                         Spacer(modifier = Modifier.width(10.dp))
                         Text(
                             text = "Nublado",
-                            color = Color.White
+                            color = Color.White,
                         )
                         Spacer(modifier = Modifier.width(10.dp))
                     } else {
                         Text("Loading weather data...", color = Color.White)
                     }
                 }
-
             }
         }
     }
-
-
 }
 
 @Composable
@@ -87,35 +84,33 @@ fun WeatherScreen(weatherViewModel: WeatherViewModel) {
                     .padding()
                     .align(Alignment.TopEnd),
                 backgroundColor = MaterialTheme.colorScheme.background.copy(alpha = 0.9f),
-                shape = CutCornerShape(1.dp)
+                shape = CutCornerShape(1.dp),
             ) {
                 Row(
                     modifier = Modifier.padding(1.dp),
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
+                    horizontalArrangement = Arrangement.Center,
                 ) {
                     if (weatherData != null) {
                         Spacer(modifier = Modifier.width(10.dp))
                         Text(
                             text = "${weatherData!!.current.temperature}°c",
-                            color = Color.White
+                            color = Color.White,
                         )
                         Spacer(modifier = Modifier.width(10.dp))
                         Text(
                             text = "${weatherData!!.current.weatherDescriptions}",
-                            color = Color.White
+                            color = Color.White,
                         )
                         Spacer(modifier = Modifier.width(10.dp))
                     } else {
                         Text("Loading weather data...", color = Color.White)
                     }
                 }
-
             }
         }
     }
-
 }
 
-//${weatherData!!.current.temperature}°c
-//${weatherData!!.current.weatherDescriptions}
+// ${weatherData!!.current.temperature}°c
+// ${weatherData!!.current.weatherDescriptions}

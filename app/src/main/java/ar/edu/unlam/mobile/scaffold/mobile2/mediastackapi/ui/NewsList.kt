@@ -14,13 +14,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
-import ar.edu.unlam.mobile2.NavegationBottom.PantallasPrueba.NavegationHost
-
-
 import ar.edu.unlam.mobile2.mediastackapi.viewmodel.NewsViewModel
 
 @Composable
-fun NewsList(viewModel: NewsViewModel, numero: Int,navController: NavHostController) {
+fun NewsList(viewModel: NewsViewModel, numero: Int, navController: NavHostController) {
     val listaNoticias by viewModel.listaNoticias.observeAsState(emptyList())
     val context = LocalContext.current
 
@@ -41,31 +38,35 @@ fun NewsList(viewModel: NewsViewModel, numero: Int,navController: NavHostControl
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             if (category == null) {
                 items(listaNoticias) { item ->
-                    NewDesign(noticia = item, onItemClick = { nuevoItem ->
-                        viewModel.actualizarItem(nuevoItem)
-                        viewModel.actualizarItemEnBase(nuevoItem)
-
-                    },
+                    NewDesign(
+                        noticia = item,
+                        onItemClick = { nuevoItem ->
+                            viewModel.actualizarItem(nuevoItem)
+                            viewModel.actualizarItemEnBase(nuevoItem)
+                        },
                         onItemClick2 = {
                             viewModel.enviarNotica(item)
                             navController.navigate("pantalla5")
-                            //NewDetailActivity.start(context, item)
-                        })
+                            // NewDetailActivity.start(context, item)
+                        },
+                    )
                 }
             } else {
                 items(listaNoticias.filter { it.category == category }) { item ->
-                    NewDesign(noticia = item, onItemClick = { nuevoItem ->
-                        viewModel.actualizarItem(nuevoItem)
-                        viewModel.actualizarItemEnBase(nuevoItem)
-                    },
+                    NewDesign(
+                        noticia = item,
+                        onItemClick = { nuevoItem ->
+                            viewModel.actualizarItem(nuevoItem)
+                            viewModel.actualizarItemEnBase(nuevoItem)
+                        },
 
                         onItemClick2 = {
                             viewModel.enviarNotica(item)
                             navController.navigate("pantalla5")
-                            //NewDetailActivity.start(context, item)
-                        })
+                            // NewDetailActivity.start(context, item)
+                        },
+                    )
                 }
-
             }
         }
     }
@@ -166,12 +167,11 @@ fun NewsList(viewModel: NewsViewModel, numero: Int,navController: NavHostControl
     else {
         Box(
             modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.Center,
         ) {
             CircularProgressIndicator()
 
             Log.d("Error en lista", "No hay datos para mostrar")
         }
     }
-
 }

@@ -4,8 +4,7 @@ import ar.edu.unlam.mobile2.mediastackapi.New
 import ar.edu.unlam.mobile2.mediastackapi.data.api.response.Data
 import ar.edu.unlam.mobile2.mediastackapi.data.local.entity.NewEntity
 
-
-fun Data.toDomain(): New{
+fun Data.toDomain(): New {
     return New(
         id = null,
         author = this.author,
@@ -21,7 +20,6 @@ fun Data.toDomain(): New{
     )
 }
 
-
 fun New.toEntity(): NewEntity {
     return NewEntity(
         id = this.id,
@@ -35,11 +33,11 @@ fun New.toEntity(): NewEntity {
         source = this.source,
         title = this.title,
         url = this.url,
-        saved = this.saved
+        saved = this.saved,
     )
 }
 
-fun NewEntity.toDomain(): New{
+fun NewEntity.toDomain(): New {
     return New(
         id = this.id,
         author = this.author,
@@ -52,6 +50,6 @@ fun NewEntity.toDomain(): New{
         source = this.source,
         title = this.title,
         url = this.url,
-        saved = this.saved
+        saved = this.saved,
     )
 }

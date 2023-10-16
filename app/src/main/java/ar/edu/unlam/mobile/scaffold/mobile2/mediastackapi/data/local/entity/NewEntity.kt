@@ -1,6 +1,5 @@
 package ar.edu.unlam.mobile2.mediastackapi.data.local.entity
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -18,5 +17,5 @@ data class NewEntity(
     val source: String?,
     val title: String?,
     val url: String?,
-    val saved: Boolean
+    val saved: Boolean,
 )
