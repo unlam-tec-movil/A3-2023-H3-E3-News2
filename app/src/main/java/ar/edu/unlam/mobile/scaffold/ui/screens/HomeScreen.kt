@@ -1,11 +1,6 @@
 package ar.edu.unlam.mobile.scaffold.ui.screens
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
 /*import androidx.hilt.navigation.compose.hiltViewModel
 import ar.edu.unlam.mobile.scaffold.domain.kitty.models.Kitty
 import ar.edu.unlam.mobile.scaffold.ui.components.PhotoCard

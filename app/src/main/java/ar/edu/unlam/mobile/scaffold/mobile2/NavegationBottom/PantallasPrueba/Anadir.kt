@@ -169,7 +169,7 @@ fun Anadir(navController: NavHostController) {
                     contentDescription = "Camara",
                     tint = Color.Black,
                 )
-            } 
+            }
         }
     }
 }
