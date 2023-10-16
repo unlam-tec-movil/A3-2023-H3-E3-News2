@@ -11,7 +11,6 @@ sealed class Tabs_item(
     var icon: Int,
     var title: String,
     var screen: miFuncion,
-
 ) {
     class item_general(viewModel: NewsViewModel, navController: NavHostController) :
         Tabs_item(R.drawable.ic_launcher_foreground, "General", { General(viewModel, navController) })
