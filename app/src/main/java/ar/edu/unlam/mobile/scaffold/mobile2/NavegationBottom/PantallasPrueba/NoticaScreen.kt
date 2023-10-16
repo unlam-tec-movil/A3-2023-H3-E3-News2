@@ -35,6 +35,7 @@ import ar.edu.unlam.mobile2.theme.Mobile2_ScaffoldingTheme
 fun NoticaScreen(new: New, navController: NavHostController) {
     PlantDetailScreen(new, navController)
 }
+
 fun abrirLink(context: Context, link: String) {
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
     context.startActivity(intent)

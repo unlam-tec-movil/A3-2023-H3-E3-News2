@@ -88,9 +88,6 @@ fun ArticleCard() {
     }
 }
 
-// noticia.source!!
-// noticia.title!!
-
 @Composable
 fun NewDesign(
     noticia: New,
