@@ -6,8 +6,6 @@ plugins {
     id 'org.jetbrains.kotlinx.kover'
 }
 
-
-
 android {
     namespace 'ar.edu.unlam.mobile.scaffold'
     compileSdk 34
