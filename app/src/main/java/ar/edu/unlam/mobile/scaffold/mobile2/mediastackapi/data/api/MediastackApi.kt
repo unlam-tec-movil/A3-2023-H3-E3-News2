@@ -10,4 +10,3 @@ interface MediastackApi {
     )
     suspend fun getNews(): NewsResponse
 }
-

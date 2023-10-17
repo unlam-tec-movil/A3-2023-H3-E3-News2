@@ -14,4 +14,3 @@ interface NewDao {
     @Query("SELECT * FROM NewEntity")
     suspend fun getNews(): List<NewEntity>
 }
-

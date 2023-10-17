@@ -66,4 +66,3 @@ fun SavedNewsList(viewModel: NewsViewModel, navController: NavHostController) {
 fun getSavedNewsCount(lista: List<New>): Int {
     return lista.filter { it.saved }.size
 }
-
