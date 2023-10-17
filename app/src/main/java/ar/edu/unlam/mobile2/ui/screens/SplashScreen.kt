@@ -58,11 +58,10 @@ fun MySplashScreen(
         )
     }
 
-    // Use a coroutine delay to navigate to the next screen after a certain time
     val coroutineScope = rememberCoroutineScope()
     LaunchedEffect(key1 = true) {
         coroutineScope.launch {
-            delay(2000) // Adjust the delay time as needed
+            delay(2000)
             navigate()
         }
     }
