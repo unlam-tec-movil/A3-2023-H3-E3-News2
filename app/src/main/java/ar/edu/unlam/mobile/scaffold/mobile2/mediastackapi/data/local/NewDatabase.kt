@@ -8,3 +8,4 @@ import ar.edu.unlam.mobile2.mediastackapi.data.local.entity.NewEntity
 abstract class NewDatabase : RoomDatabase() {
     abstract val dao: NewDao
 }
+

@@ -82,7 +82,8 @@ fun ArticleCard() {
                         .fillMaxWidth()
                         .height(5.dp),
                     color = MaterialTheme.colorScheme.primary,
-                ) {}
+                ) {
+                }
             }
         }
     }
@@ -158,7 +159,8 @@ fun NewDesign(
                     .fillMaxWidth()
                     .height(5.dp),
                 color = MaterialTheme.colorScheme.primary,
-            ) {}
+            ) {
+            }
         }
     }
 }
