@@ -25,7 +25,7 @@ jobs:
 
       - name: Run ktlint
         run: |
-          ktlint --reporter=checkstyle,output=build/ktlint-report.xml
+          ktlint --reporter=checkstyle,output=app/src/ktlint-report.xml
       - name: Action ktlint
         uses: yutailang0119/action-ktlint@v3
         with:
