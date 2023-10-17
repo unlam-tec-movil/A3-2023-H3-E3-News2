@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/ui/components/mediastack/NewCard.kt
 package ar.edu.unlam.mobile.scaffold.mobile2.ui.components.mediastack
-========
-package ar.edu.unlam.mobile2.mediastackapi.ui
->>>>>>>> develop:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/mediastackapi/ui/NewCard.kt
 
 import android.util.Log
 import androidx.compose.foundation.BorderStroke
@@ -29,15 +25,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-<<<<<<<< HEAD:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/ui/components/mediastack/NewCard.kt
-import ar.edu.unlam.mobile2.R
 import ar.edu.unlam.mobile.scaffold.mobile2.domain.mediastack.models.New
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.theme.Mobile2_ScaffoldingTheme
-========
 import ar.edu.unlam.mobile.scaffold.R
-import ar.edu.unlam.mobile2.mediastackapi.New
-import ar.edu.unlam.mobile2.theme.Mobile2_ScaffoldingTheme
->>>>>>>> develop:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/mediastackapi/ui/NewCard.kt
 
 @Preview(showSystemUi = true)
 @Preview(showBackground = false)
@@ -92,23 +82,12 @@ fun ArticleCard() {
                         .fillMaxWidth()
                         .height(5.dp),
                     color = MaterialTheme.colorScheme.primary,
-<<<<<<<< HEAD:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/ui/components/mediastack/NewCard.kt
                 ) {}
-========
-                ) {
-                }
->>>>>>>> develop:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/mediastackapi/ui/NewCard.kt
             }
         }
     }
 }
 
-<<<<<<<< HEAD:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/ui/components/mediastack/NewCard.kt
-// noticia.source!!
-// noticia.title!!
-
-========
->>>>>>>> develop:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/mediastackapi/ui/NewCard.kt
 @Composable
 fun NewDesign(
     noticia: New,
@@ -179,12 +158,7 @@ fun NewDesign(
                     .fillMaxWidth()
                     .height(5.dp),
                 color = MaterialTheme.colorScheme.primary,
-<<<<<<<< HEAD:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/ui/components/mediastack/NewCard.kt
             ) {}
-========
-            ) {
-            }
->>>>>>>> develop:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/mediastackapi/ui/NewCard.kt
         }
     }
 }

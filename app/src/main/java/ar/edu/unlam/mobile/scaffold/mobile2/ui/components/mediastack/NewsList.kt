@@ -14,10 +14,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
-<<<<<<<< HEAD:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/ui/components/mediastack/NewsList.kt
-========
-import ar.edu.unlam.mobile2.mediastackapi.viewmodel.NewsViewModel
->>>>>>>> develop:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/mediastackapi/ui/NewsList.kt
 
 @Composable
 fun NewsList(viewModel: NewsViewModel, numero: Int, navController: NavHostController) {

@@ -30,7 +30,6 @@ fun Tabs(tabs: List<Tabs_item>, pagerState: PagerState) {
     ) {
         tabs.forEachIndexed { index, tabsItem ->
             Tab(
-<<<<<<<< HEAD:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/ui/components/tabs/Tabs.kt
                 selected = pagerState.currentPage == index,
                 onClick = { scope.launch { pagerState.animateScrollToPage(index) } },
                 text = { Text(tabsItem.title, color = MaterialTheme.colorScheme.tertiary) },
@@ -51,14 +50,6 @@ fun Tabs(tabs: List<Tabs_item>, pagerState: PagerState) {
         }
     }
 }
-========
-                selected = pagerState.currentPage == index,
-                onClick = { scope.launch { pagerState.animateScrollToPage(index) } },
-                text = { Text(tabsItem.title, color = MaterialTheme.colorScheme.tertiary) },
-            )
-        }
-    }
-}
 /*
            LeadingIconTab(
                selected = pagerState.currentPage == index,
@@ -71,4 +62,3 @@ fun Tabs(tabs: List<Tabs_item>, pagerState: PagerState) {
                        )
                },
                text = { Text(tabsItem.title) })*/
->>>>>>>> develop:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/Tabs/ui/Tabs.kt

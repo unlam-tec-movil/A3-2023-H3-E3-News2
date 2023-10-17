@@ -1,5 +1,6 @@
 package ar.edu.unlam.mobile.scaffold.mobile2.ui.components.weather
 
+import WeatherViewModel
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -23,7 +24,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ar.edu.unlam.mobile.scaffold.mobile2.data.weather.network.WeatherResponse
-import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.weather.WeatherViewModel
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.theme.Mobile2_ScaffoldingTheme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
