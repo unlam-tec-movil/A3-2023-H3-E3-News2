@@ -1,6 +1,5 @@
 package ar.edu.unlam.mobile2.data.weather.network
 
-
 import com.google.gson.annotations.SerializedName
 
 data class Location(
@@ -21,5 +20,5 @@ data class Location(
     @SerializedName("timezone_id")
     val timezoneId: String,
     @SerializedName("utc_offset")
-    val utcOffset: String
+    val utcOffset: String,
 )

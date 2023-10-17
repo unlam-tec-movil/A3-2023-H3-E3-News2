@@ -37,31 +37,35 @@ fun NewsList(viewModel: NewsViewModel, numero: Int, navController: NavHostContro
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             if (category == null) {
                 items(listaNoticias) { item ->
-                    NewDesign(noticia = item, onItemClick = { nuevoItem ->
-                        viewModel.actualizarItem(nuevoItem)
-                        viewModel.actualizarItemEnBase(nuevoItem)
-
-                    },
+                    NewDesign(
+                        noticia = item,
+                        onItemClick = { nuevoItem ->
+                            viewModel.actualizarItem(nuevoItem)
+                            viewModel.actualizarItemEnBase(nuevoItem)
+                        },
                         onItemClick2 = {
                             viewModel.enviarNotica(item)
                             navController.navigate("pantalla5")
-                            //NewDetailActivity.start(context, item)
-                        })
+                            // NewDetailActivity.start(context, item)
+                        },
+                    )
                 }
             } else {
                 items(listaNoticias.filter { it.category == category }) { item ->
-                    NewDesign(noticia = item, onItemClick = { nuevoItem ->
-                        viewModel.actualizarItem(nuevoItem)
-                        viewModel.actualizarItemEnBase(nuevoItem)
-                    },
+                    NewDesign(
+                        noticia = item,
+                        onItemClick = { nuevoItem ->
+                            viewModel.actualizarItem(nuevoItem)
+                            viewModel.actualizarItemEnBase(nuevoItem)
+                        },
 
                         onItemClick2 = {
                             viewModel.enviarNotica(item)
                             navController.navigate("pantalla5")
-                            //NewDetailActivity.start(context, item)
-                        })
+                            // NewDetailActivity.start(context, item)
+                        },
+                    )
                 }
-
             }
         }
     }
@@ -162,12 +166,11 @@ fun NewsList(viewModel: NewsViewModel, numero: Int, navController: NavHostContro
     else {
         Box(
             modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.Center,
         ) {
             CircularProgressIndicator()
 
             Log.d("Error en lista", "No hay datos para mostrar")
         }
     }
-
 }

@@ -22,15 +22,18 @@ fun Tabs(tabs: List<Tabs_item>, pagerState: PagerState) {
         selectedTabIndex = pagerState.currentPage,
         indicator = { tabPositions ->
             TabRowDefaults.Indicator(
-                Modifier.pagerTabIndicatorOffset(pagerState, tabPositions), color = MaterialTheme.colorScheme.primary
+                Modifier.pagerTabIndicatorOffset(pagerState, tabPositions),
+                color = MaterialTheme.colorScheme.primary,
             )
         },
-        backgroundColor = MaterialTheme.colorScheme.background
+        backgroundColor = MaterialTheme.colorScheme.background,
     ) {
         tabs.forEachIndexed { index, tabsItem ->
-            Tab(selected = pagerState.currentPage == index,
+            Tab(
+                selected = pagerState.currentPage == index,
                 onClick = { scope.launch { pagerState.animateScrollToPage(index) } },
-                text = { Text(tabsItem.title, color = MaterialTheme.colorScheme.tertiary)})
+                text = { Text(tabsItem.title, color = MaterialTheme.colorScheme.tertiary) },
+            )
 
             /*
             LeadingIconTab(
@@ -44,7 +47,6 @@ fun Tabs(tabs: List<Tabs_item>, pagerState: PagerState) {
                         )
                 },
                 text = { Text(tabsItem.title) })*/
-
         }
     }
 }

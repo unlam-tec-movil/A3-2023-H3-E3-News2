@@ -1,11 +1,9 @@
 package ar.edu.unlam.mobile2.ui.screens.weather
 
-
 import androidx.lifecycle.ViewModel
-import ar.edu.unlam.mobile2.data.weather.repository.WeatherStackRepository
 import ar.edu.unlam.mobile2.data.weather.network.WeatherResponse
+import ar.edu.unlam.mobile2.data.weather.repository.WeatherStackRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-
 import javax.inject.Inject
 
 @HiltViewModel

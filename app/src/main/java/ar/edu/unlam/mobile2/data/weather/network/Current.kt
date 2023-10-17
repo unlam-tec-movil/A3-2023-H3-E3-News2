@@ -1,6 +1,5 @@
 package ar.edu.unlam.mobile2.data.weather.network
 
-
 import com.google.gson.annotations.SerializedName
 
 data class Current(
@@ -33,5 +32,5 @@ data class Current(
     @SerializedName("wind_dir")
     val windDir: String,
     @SerializedName("wind_speed")
-    val windSpeed: Double
+    val windSpeed: Double,
 )

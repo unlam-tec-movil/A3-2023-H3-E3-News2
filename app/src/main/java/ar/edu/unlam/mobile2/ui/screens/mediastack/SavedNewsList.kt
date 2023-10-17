@@ -1,7 +1,5 @@
 package ar.edu.unlam.mobile2.ui.screens.mediastack
 
-
-
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
-
 import ar.edu.unlam.mobile2.domain.mediastack.models.New
 import ar.edu.unlam.mobile2.ui.components.mediastack.NewDesign
 import ar.edu.unlam.mobile2.ui.components.mediastack.NewsViewModel
@@ -29,14 +26,12 @@ fun MySavedNewsPreview() {
     Mobile2_ScaffoldingTheme() {
         Box(
             modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.Center,
         ) {
-            Text(text = "No hay noticias marcadas.", style = MaterialTheme.typography.titleLarge ,color = MaterialTheme.colorScheme.onBackground)
+            Text(text = "No hay noticias marcadas.", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onBackground)
         }
     }
-
 }
-
 
 @Composable
 fun SavedNewsList(viewModel: NewsViewModel, navController: NavHostController) {
@@ -47,22 +42,24 @@ fun SavedNewsList(viewModel: NewsViewModel, navController: NavHostController) {
     if (savedNewsSize != 0) {
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             items(listaNoticias.filter { it.saved }) { item ->
-                NewDesign(noticia = item, onItemClick = { nuevoItem ->
-                    viewModel.actualizarItem(nuevoItem)
-                },
+                NewDesign(
+                    noticia = item,
+                    onItemClick = { nuevoItem ->
+                        viewModel.actualizarItem(nuevoItem)
+                    },
                     onItemClick2 = {
-
                         viewModel.enviarNotica(item)
                         navController.navigate("pantalla5")
-                    })
+                    },
+                )
             }
         }
     } else {
         Box(
             modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.Center,
         ) {
-            Text(text = "No hay noticias marcadas.", style = MaterialTheme.typography.titleLarge ,color = MaterialTheme.colorScheme.onBackground)
+            Text(text = "No hay noticias marcadas.", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onBackground)
         }
     }
 }
@@ -70,5 +67,3 @@ fun SavedNewsList(viewModel: NewsViewModel, navController: NavHostController) {
 fun getSavedNewsCount(lista: List<New>): Int {
     return lista.filter { it.saved }.size
 }
-
-

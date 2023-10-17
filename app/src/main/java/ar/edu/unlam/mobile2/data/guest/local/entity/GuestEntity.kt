@@ -7,4 +7,5 @@ import androidx.room.PrimaryKey
 data class GuestEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
-    val username: String?)
+    val username: String?,
+)

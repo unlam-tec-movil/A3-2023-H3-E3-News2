@@ -1,14 +1,14 @@
 package ar.edu.unlam.mobile2.data.mediastack.repository
 
-import ar.edu.unlam.mobile2.domain.mediastack.models.New
 import ar.edu.unlam.mobile2.data.mediastack.local.NewDao
+import ar.edu.unlam.mobile2.domain.mediastack.models.New
 import ar.edu.unlam.mobile2.domain.mediastack.services.toDomain
 import ar.edu.unlam.mobile2.domain.mediastack.services.toEntity
 import java.lang.Exception
 
 class NewRepository(
     private val api: MediastackApi,
-    private val dao: NewDao
+    private val dao: NewDao,
 ) {
     suspend fun createLocalNew(
         autor: String? = "null",
@@ -36,7 +36,7 @@ class NewRepository(
             source = source,
             title = title,
             url = url,
-            saved = saved
+            saved = saved,
         )
 
         updateNewInDatabase(noticiaCreada)

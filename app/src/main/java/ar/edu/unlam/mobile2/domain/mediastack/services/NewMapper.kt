@@ -1,9 +1,8 @@
 package ar.edu.unlam.mobile2.domain.mediastack.services
 
-import ar.edu.unlam.mobile2.domain.mediastack.models.New
-import ar.edu.unlam.mobile2.data.mediastack.network.Data
 import ar.edu.unlam.mobile2.data.mediastack.local.entity.NewEntity
-
+import ar.edu.unlam.mobile2.data.mediastack.network.Data
+import ar.edu.unlam.mobile2.domain.mediastack.models.New
 
 fun Data.toDomain(): New {
     return New(
@@ -34,7 +33,7 @@ fun New.toEntity(): NewEntity {
         source = this.source,
         title = this.title,
         url = this.url,
-        saved = this.saved
+        saved = this.saved,
     )
 }
 
@@ -51,6 +50,6 @@ fun NewEntity.toDomain(): New {
         source = this.source,
         title = this.title,
         url = this.url,
-        saved = this.saved
+        saved = this.saved,
     )
 }
