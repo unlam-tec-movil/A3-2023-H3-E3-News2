@@ -1,8 +1,6 @@
 package ar.edu.unlam.mobile.scaffold.ui.screens
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import ar.edu.unlam.mobile.scaffold.domain.kitty.models.Kitty
+/*import ar.edu.unlam.mobile.scaffold.domain.kitty.models.Kitty
 import ar.edu.unlam.mobile.scaffold.domain.kitty.services.KittyGetter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -51,3 +49,5 @@ class HomeViewModel @Inject constructor(val kittyGetter: KittyGetter) : ViewMode
         }
     }
 }
+
+ */
