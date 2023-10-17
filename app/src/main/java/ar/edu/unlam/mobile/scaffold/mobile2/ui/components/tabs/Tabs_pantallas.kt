@@ -1,4 +1,6 @@
-package ar.edu.unlam.mobile2.Tabs.repository
+package ar.edu.unlam.mobile2.Tabs.repository // ktlint-disable package-name
+// ktlint-disable filename
+// ktlint-disable filename
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController

@@ -1,6 +1,5 @@
 package ar.edu.unlam.mobile.scaffold.mobile2.ui.components.bottomnav
 
-import WeatherViewModel
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -18,6 +17,7 @@ import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.Inicio
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.MySplashScreen
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.Settings
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.mediastack.NoticaScreen
+import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.weather.WeatherViewModel
 
 @Composable
 fun NavegationHost(

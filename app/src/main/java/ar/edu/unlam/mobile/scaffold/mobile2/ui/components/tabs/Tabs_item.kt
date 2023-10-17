@@ -1,9 +1,16 @@
-package ar.edu.unlam.mobile2.Tabs.repository
+package ar.edu.unlam.mobile.scaffold.mobile2.ui.components.tabs // ktlint-disable filename
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
-import ar.edu.unlam.mobile2.R
+import ar.edu.unlam.mobile.scaffold.R
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.mediastack.NewsViewModel
+import ar.edu.unlam.mobile2.Tabs.repository.Business
+import ar.edu.unlam.mobile2.Tabs.repository.Entertainment
+import ar.edu.unlam.mobile2.Tabs.repository.General
+import ar.edu.unlam.mobile2.Tabs.repository.Health
+import ar.edu.unlam.mobile2.Tabs.repository.Science
+import ar.edu.unlam.mobile2.Tabs.repository.Sports
+import ar.edu.unlam.mobile2.Tabs.repository.Technology
 
 typealias miFuncion = @Composable () -> Unit
 

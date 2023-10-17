@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.Divider
 import androidx.compose.material.TopAppBar
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -29,10 +28,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import ar.edu.unlam.mobile2.R
+import ar.edu.unlam.mobile.scaffold.R
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.mediastack.NewsViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Anadir(navController: NavHostController, viewMode: NewsViewModel) {
     var text by remember { mutableStateOf("") } // titulo

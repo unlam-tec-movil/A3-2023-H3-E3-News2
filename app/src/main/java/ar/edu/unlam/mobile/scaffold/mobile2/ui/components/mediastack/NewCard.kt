@@ -25,9 +25,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import ar.edu.unlam.mobile.scaffold.R
 import ar.edu.unlam.mobile.scaffold.mobile2.domain.mediastack.models.New
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.theme.Mobile2_ScaffoldingTheme
-import ar.edu.unlam.mobile.scaffold.R
 
 @Preview(showSystemUi = true)
 @Preview(showBackground = false)

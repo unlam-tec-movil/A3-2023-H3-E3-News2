@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
-import ar.edu.unlam.mobile2.R
+import ar.edu.unlam.mobile.scaffold.R
 
 @Composable
 fun MainTopAppBar(navController: NavHostController) {
