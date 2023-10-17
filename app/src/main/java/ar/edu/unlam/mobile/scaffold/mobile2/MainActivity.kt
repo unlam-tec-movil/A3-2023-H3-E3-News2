@@ -1,5 +1,8 @@
 package ar.edu.unlam.mobile.scaffold.mobile2
 
+import ItemsMenu
+import Tabs_content
+import WeatherViewModel
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -32,13 +35,10 @@ import androidx.navigation.compose.rememberNavController
 import ar.edu.unlam.mobile2.Tabs.repository.Tabs_item
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.BotonFlotante
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.MainTopAppBar
-import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.bottomnav.ItemsMenu
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.bottomnav.NavegationHost
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.guest.GuestViewModel
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.mediastack.NewsViewModel
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.tabs.Tabs
-import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.tabs.Tabs_content
-import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.weather.WeatherViewModel
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.theme.Mobile2_ScaffoldingTheme
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
