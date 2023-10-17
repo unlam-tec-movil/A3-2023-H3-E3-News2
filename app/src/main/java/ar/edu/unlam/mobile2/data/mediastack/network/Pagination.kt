@@ -10,5 +10,5 @@ data class Pagination(
     @Query("offset")
     val offset: Int,
     @Query("total")
-    val total: Int
+    val total: Int,
 )

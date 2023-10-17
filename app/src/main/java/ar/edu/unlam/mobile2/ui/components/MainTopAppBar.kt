@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import ar.edu.unlam.mobile2.R
-import ar.edu.unlam.mobile2.ui.components.guest.GuestViewModel
 
 @Composable
 fun MainTopAppBar(navController: NavHostController) {
@@ -29,11 +28,9 @@ fun MainTopAppBar(navController: NavHostController) {
             }) {
                 Icon(imageVector = Icons.Filled.Build, contentDescription = "Configuración")
             }
-        }
+        },
     )
-
 }
-
 
 /*TopAppBar(
 backgroundColor = MaterialTheme.colorScheme.background

@@ -11,10 +11,9 @@ import ar.edu.unlam.mobile2.ui.components.weather.WeatherScreen
 import ar.edu.unlam.mobile2.ui.screens.weather.WeatherViewModel
 
 @Composable
-fun Inicio (weatherViewModel: WeatherViewModel, viewModel: NewsViewModel, navController: NavHostController){
-
+fun Inicio(weatherViewModel: WeatherViewModel, viewModel: NewsViewModel, navController: NavHostController) {
     Box(modifier = Modifier.fillMaxSize()) {
-        NewsList(viewModel,0,navController)
+        NewsList(viewModel, 0, navController)
         WeatherScreen(weatherViewModel)
     }
 }

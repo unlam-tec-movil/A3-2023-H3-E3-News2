@@ -48,7 +48,7 @@ class NewsViewModel @Inject constructor(
                 source,
                 title,
                 url,
-                saved
+                saved,
             )
         }
     }
@@ -94,14 +94,12 @@ class NewsViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             state = state.copy(
-                isLoading = true
+                isLoading = true,
             )
             _listaNoticias.value = getNews.getNews()
             state = state.copy(
-                isLoading = false
+                isLoading = false,
             )
         }
     }
-
-
 }

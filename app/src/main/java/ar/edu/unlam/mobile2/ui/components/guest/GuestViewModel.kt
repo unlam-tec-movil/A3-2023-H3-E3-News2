@@ -12,16 +12,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GuestViewModel @Inject constructor(
-    private val repository: GuestRepository
-): ViewModel() {
+    private val repository: GuestRepository,
+) : ViewModel() {
     private val _existeGuest = MutableLiveData<Boolean>()
     val existeGuest: LiveData<Boolean> = _existeGuest
 
-    private fun crearUsuario(name: String): Guest{
+    private fun crearUsuario(name: String): Guest {
         return Guest(1, name)
     }
 
-    fun actualizarBase(name: String){
+    fun actualizarBase(name: String) {
         val guest = crearUsuario(name)
         viewModelScope.launch {
             repository.addGuestInDatabase(guest)
@@ -33,5 +33,4 @@ class GuestViewModel @Inject constructor(
             _existeGuest.value = repository.verifyDatabase()
         }
     }
-
 }

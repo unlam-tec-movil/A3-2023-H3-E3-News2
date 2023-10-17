@@ -1,24 +1,21 @@
 package ar.edu.unlam.mobile2.ui.components.bottomnav
 
-import android.hardware.camera2.CameraManager
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import ar.edu.unlam.mobile2.ui.components.guest.GuestViewModel
+import ar.edu.unlam.mobile2.ui.components.mediastack.NewsViewModel
 import ar.edu.unlam.mobile2.ui.screens.Anadir
 import ar.edu.unlam.mobile2.ui.screens.Favorito
 import ar.edu.unlam.mobile2.ui.screens.Filtro
-import ar.edu.unlam.mobile2.ui.screens.Inicio
-import ar.edu.unlam.mobile2.ui.screens.mediastack.NoticaScreen
-import ar.edu.unlam.mobile2.domain.mediastack.models.New
-import ar.edu.unlam.mobile2.ui.components.guest.GuestViewModel
-import ar.edu.unlam.mobile2.ui.components.mediastack.NewsViewModel
 import ar.edu.unlam.mobile2.ui.screens.IngresarNombre
+import ar.edu.unlam.mobile2.ui.screens.Inicio
 import ar.edu.unlam.mobile2.ui.screens.Settings
+import ar.edu.unlam.mobile2.ui.screens.mediastack.NoticaScreen
 import ar.edu.unlam.mobile2.ui.screens.weather.WeatherViewModel
-
 
 @Composable
 fun NavegationHost(
@@ -32,7 +29,7 @@ fun NavegationHost(
 
     NavHost(
         navController = navHostController,
-        startDestination = if (existeGuest) ItemsMenu.Pantalla1.ruta else ItemsMenu.IngresarNombreScreen.ruta
+        startDestination = if (existeGuest) ItemsMenu.Pantalla1.ruta else ItemsMenu.IngresarNombreScreen.ruta,
     ) {
         composable(ItemsMenu.IngresarNombreScreen.ruta) {
             viewModel.hideItem()
@@ -64,5 +61,4 @@ fun NavegationHost(
             Settings(guestViewModel)
         }
     }
-
 }

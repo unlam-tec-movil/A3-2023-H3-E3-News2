@@ -22,5 +22,5 @@ data class Data(
     @Query("title")
     val title: String,
     @Query("url")
-    val url: String
+    val url: String,
 )

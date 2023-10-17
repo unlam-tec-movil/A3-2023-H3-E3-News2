@@ -1,6 +1,5 @@
 package ar.edu.unlam.mobile2.domain.mediastack.models
 
-import androidx.compose.runtime.MutableState
 import java.io.Serializable
 
 data class New(
@@ -15,5 +14,5 @@ data class New(
     val source: String?,
     val title: String?,
     val url: String?,
-    var saved: Boolean = false
-):Serializable
+    var saved: Boolean = false,
+) : Serializable

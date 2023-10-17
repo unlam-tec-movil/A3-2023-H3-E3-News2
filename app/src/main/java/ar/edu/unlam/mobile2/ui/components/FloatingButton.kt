@@ -23,7 +23,7 @@ import ar.edu.unlam.mobile2.ui.components.mediastack.NewsViewModel
 
 @Composable
 fun BotonFlotante(navController: NavHostController, viewModel: NewsViewModel) {
-    //var visible by remember { mutableStateOf(true) }
+    // var visible by remember { mutableStateOf(true) }
     var visible = viewModel.isVisible.value
     val density = LocalDensity.current
     AnimatedVisibility(
@@ -33,20 +33,22 @@ fun BotonFlotante(navController: NavHostController, viewModel: NewsViewModel) {
             with(density) { -40.dp.roundToPx() }
         } + expandVertically(
             // Expand from the top.
-            expandFrom = Alignment.Top
+            expandFrom = Alignment.Top,
         ) + fadeIn(
             // Fade in with the initial alpha of 0.3f.
-            initialAlpha = 0.3f
+            initialAlpha = 0.3f,
         ),
-        exit = slideOutVertically() + shrinkVertically() + fadeOut()
+        exit = slideOutVertically() + shrinkVertically() + fadeOut(),
     ) {
-        IconButton(onClick = {
-            navController.navigate("pantalla4")
-            visible = !visible
-            Log.i("CLICK", "Click")
-            Log.i("Visible", visible.toString())
-        },
-            colors = IconButtonDefaults.iconButtonColors(Color.White)) {
+        IconButton(
+            onClick = {
+                navController.navigate("pantalla4")
+                visible = !visible
+                Log.i("CLICK", "Click")
+                Log.i("Visible", visible.toString())
+            },
+            colors = IconButtonDefaults.iconButtonColors(Color.White),
+        ) {
             Icon(imageVector = Icons.Filled.Add, contentDescription = "Add")
         }
     }

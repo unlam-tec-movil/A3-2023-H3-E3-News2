@@ -28,111 +28,102 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-
 import ar.edu.unlam.mobile2.domain.mediastack.models.New
 import ar.edu.unlam.mobile2.ui.theme.Mobile2_ScaffoldingTheme
 
 @Composable
 fun NoticaScreen(new: New, navController: NavHostController) {
-    PlantDetailScreen(new,navController)
-
+    PlantDetailScreen(new, navController)
 }
-    fun abrirLink(context: Context, link: String){
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
-        context.startActivity(intent)
-    }
+fun abrirLink(context: Context, link: String) {
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+    context.startActivity(intent)
+}
 
-    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
-    @Composable
-    fun NewDetail(new: New) {
-        val context = LocalContext.current
-        Mobile2_ScaffoldingTheme {
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(15.dp)
-            ) {
-                item {
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+@Composable
+fun NewDetail(new: New) {
+    val context = LocalContext.current
+    Mobile2_ScaffoldingTheme {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(15.dp),
+        ) {
+            item {
+                Text(
+                    text = new.title!!,
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.primary,
+                )
+            }
+            item { Spacer(modifier = Modifier.height(5.dp)) }
+            item {
+                Row {
                     Text(
-                        text = new.title!!,
-                        style = MaterialTheme.typography.titleLarge,
+                        text = new.source!!,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.secondary,
                         fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.primary
                     )
-                }
-                item { Spacer(modifier = Modifier.height(5.dp)) }
-                item {
-                    Row {
-                        Text(
-                            text = new.source!!,
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.secondary,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Spacer(modifier = Modifier.width(10.dp))
-                        Text(
-                            text = new.category!!,
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.secondary,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
-                }
-                item { Spacer(modifier = Modifier.height(15.dp)) }
-                item {
+                    Spacer(modifier = Modifier.width(10.dp))
                     Text(
-                        text = new.description!!,
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.tertiary
+                        text = new.category!!,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.secondary,
+                        fontWeight = FontWeight.Bold,
                     )
                 }
-                item { Spacer(modifier = Modifier.height(10.dp)) }
-                item {
-                    Button(
-                        onClick = { abrirLink(context, new.url!!) },
-                        modifier = Modifier.fillMaxWidth(),
-                        colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colorScheme.primary)
-                    ) {
-                        androidx.compose.material.Text(
-                            text = "Para ver la noticia completa, haga click aquí",
-                            color = MaterialTheme.colorScheme.tertiary
-                        )
-                    }
+            }
+            item { Spacer(modifier = Modifier.height(15.dp)) }
+            item {
+                Text(
+                    text = new.description!!,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.tertiary,
+                )
+            }
+            item { Spacer(modifier = Modifier.height(10.dp)) }
+            item {
+                Button(
+                    onClick = { abrirLink(context, new.url!!) },
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colorScheme.primary),
+                ) {
+                    androidx.compose.material.Text(
+                        text = "Para ver la noticia completa, haga click aquí",
+                        color = MaterialTheme.colorScheme.tertiary,
+                    )
                 }
-
-
             }
         }
     }
+}
 
-    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
-    @Composable
-    fun PlantDetailScreen(new: New, navController: NavHostController) {
-        Scaffold(
-            topBar = {
-                TopAppBar(
-                    title = {
-                    },
-                    navigationIcon = {
-                        IconButton(onClick = { navController.popBackStack() }) {
-                            Icon(
-                                Icons.Filled.ArrowBack,
-                                null,
-                                tint = MaterialTheme.colorScheme.primary
-                            )
-                        }
-                    },
-                    backgroundColor = MaterialTheme.colorScheme.background
-                )
-            },
-            backgroundColor = MaterialTheme.colorScheme.background,
-            content = {
-                NewDetail(new)
-            }
-        )
-    }
-
-
-
-
-
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+@Composable
+fun PlantDetailScreen(new: New, navController: NavHostController) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(
+                            Icons.Filled.ArrowBack,
+                            null,
+                            tint = MaterialTheme.colorScheme.primary,
+                        )
+                    }
+                },
+                backgroundColor = MaterialTheme.colorScheme.background,
+            )
+        },
+        backgroundColor = MaterialTheme.colorScheme.background,
+        content = {
+            NewDetail(new)
+        },
+    )
+}

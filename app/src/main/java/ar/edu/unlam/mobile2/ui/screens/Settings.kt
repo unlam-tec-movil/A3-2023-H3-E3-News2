@@ -4,10 +4,8 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.Button
@@ -30,8 +28,7 @@ import ar.edu.unlam.mobile2.ui.components.guest.GuestViewModel
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun Settings(viewModel: GuestViewModel) {
-    Scaffold(
-    ) {
+    Scaffold() {
         SettingsContainer(viewModel)
     }
 }
@@ -42,18 +39,21 @@ fun SettingsContainer(viewModel: GuestViewModel, modifier: Modifier = Modifier) 
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         var name by remember { mutableStateOf("") }
         var nameError by remember { mutableStateOf(false) }
 
-
         Row(modifier = Modifier.fillMaxWidth()) {
             Column {
-                TextField(value = name, onValueChange = {
-                    name = it
-                    nameError = false
-                }, label = { Text("Nombre") }, isError = nameError
+                TextField(
+                    value = name,
+                    onValueChange = {
+                        name = it
+                        nameError = false
+                    },
+                    label = { Text("Nombre") },
+                    isError = nameError,
                 )
                 val assistiveElementText = if (nameError) "Error: Obligatorio" else "*Obligatorio"
                 val assistiveElementColor = if (nameError) {
@@ -65,7 +65,7 @@ fun SettingsContainer(viewModel: GuestViewModel, modifier: Modifier = Modifier) 
                     text = assistiveElementText,
                     color = assistiveElementColor,
                     style = MaterialTheme.typography.caption,
-                    modifier = Modifier.padding(start = 16.dp)
+                    modifier = Modifier.padding(start = 16.dp),
                 )
             }
 
@@ -76,7 +76,7 @@ fun SettingsContainer(viewModel: GuestViewModel, modifier: Modifier = Modifier) 
                     } else {
                         nameError = name.isBlank()
                     }
-                }
+                },
             ) {
                 Text("Continuar")
             }
@@ -84,10 +84,8 @@ fun SettingsContainer(viewModel: GuestViewModel, modifier: Modifier = Modifier) 
     }
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview(showSystemUi = true)
 @Composable
 private fun SettingsPreview() {
-
 }
