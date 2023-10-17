@@ -2,19 +2,18 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-    id "org.jetbrains.kotlin.kapt"
     id 'com.google.dagger.hilt.android'
     id 'org.jetbrains.kotlinx.kover'
 }
 
 android {
-    namespace 'ar.edu.unlam.mobile2'
-    compileSdk 33
+    namespace 'ar.edu.unlam.mobile.scaffold'
+    compileSdk 34
 
     defaultConfig {
-        applicationId "ar.edu.unlam.mobile2"
+        applicationId "ar.edu.unlam.mobile.scaffold"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -30,22 +29,25 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
-        //kotlinCompilerExtensionVersion = "1.4.2"
     }
+
     kotlinOptions {
         jvmTarget = '17'
     }
+
     buildFeatures {
-        compose = true
-        viewBinding true
+        compose true
     }
+
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.5"
+        kotlinCompilerExtensionVersion '1.4.3'
     }
-    packagingOptions {
+
+    packaging {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
@@ -53,6 +55,10 @@ android {
 }
 
 dependencies {
+    def nav_version = "2.7.1"
+    def hilt_version = "2.47"
+    def retrofit_version = "2.9.0"
+
     //collapsing topappbar
     implementation "com.google.accompanist:accompanist-swiperefresh:0.18.0"
 
@@ -73,10 +79,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    implementation'androidx.navigation:navigation-compose:2.5.3a'
-    implementation 'androidx.compose.ui:ui:1.4.3'
-    implementation 'androidx.compose.material:material:1.4.3'
-    // Inyeccion de dependencias con Hilt
+
+    // Navigation
+    implementation "androidx.navigation:navigation-compose:$nav_version"
+
+    // Hilt & Dagger
     implementation 'com.google.dagger:hilt-android:2.45'
     androidTestImplementation platform('androidx.compose:compose-bom:2022.10.00')
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
@@ -89,13 +96,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
     implementation 'androidx.navigation:navigation-compose:2.5.3'
 
-    // Retrofit: para invocar servicios externos
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-
-    // Jetpack Compose
-    implementation 'androidx.compose:compose-bom:2023.04.00'
-    androidTestImplementation 'androidx.compose:compose-bom:2023.04.00'
     // Material Design 3
     implementation("androidx.compose.material3:material3:1.0.1")
 
@@ -114,7 +114,6 @@ dependencies {
 
     implementation 'androidx.compose.runtime:runtime-livedata:1.5.0-beta02'
 
-
     //Room
     def roomVersion = '2.5.0'
 
@@ -128,15 +127,30 @@ dependencies {
     implementation("com.google.accompanist:accompanist-pager-indicators:0.20.0")
 
 //App center
-
-
     def appCenterSdkVersion = '4.4.5'
     implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
 
-}
+    // Retrofit: para invocar servicios externos
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
-// Allow references to generated code
-kapt {
-    correctErrorTypes true
+    // Coil
+    implementation 'io.coil-kt:coil-compose:2.4.0'
+
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
+    implementation 'androidx.activity:activity-compose:1.7.2'
+    implementation platform('androidx.compose:compose-bom:2023.08.00')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.ui:ui-graphics'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation 'androidx.compose.material3:material3'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation platform('androidx.compose:compose-bom:2023.08.00')
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
 }

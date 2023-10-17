@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/ui/components/tabs/Tabs_content.kt
 package ar.edu.unlam.mobile.scaffold.mobile2.ui.components.tabs
+========
+package ar.edu.unlam.mobile2.Tabs.ui // ktlint-disable filename
+>>>>>>>> develop:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/Tabs/ui/Tabs_content.kt
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable

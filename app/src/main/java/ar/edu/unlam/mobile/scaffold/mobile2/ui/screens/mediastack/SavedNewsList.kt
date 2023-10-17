@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/ui/screens/mediastack/SavedNewsList.kt
 package ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.mediastack
+========
+package ar.edu.unlam.mobile2.mediastackapi.ui
+>>>>>>>> develop:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/mediastackapi/ui/SavedNewsList.kt
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,10 +19,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
+<<<<<<<< HEAD:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/ui/screens/mediastack/SavedNewsList.kt
 import ar.edu.unlam.mobile.scaffold.mobile2.domain.mediastack.models.New
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.mediastack.NewDesign
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.mediastack.NewsViewModel
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.theme.Mobile2_ScaffoldingTheme
+========
+import ar.edu.unlam.mobile2.mediastackapi.New
+import ar.edu.unlam.mobile2.mediastackapi.viewmodel.NewsViewModel
+import ar.edu.unlam.mobile2.theme.Mobile2_ScaffoldingTheme
+>>>>>>>> develop:app/src/main/java/ar/edu/unlam/mobile/scaffold/mobile2/mediastackapi/ui/SavedNewsList.kt
 
 @Preview(showSystemUi = true)
 @Composable
