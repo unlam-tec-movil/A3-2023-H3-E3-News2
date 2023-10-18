@@ -14,6 +14,7 @@ import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.Favorito
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.Filtro
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.IngresarNombre
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.Inicio
+import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.MyGoogleMap
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.MySplashScreen
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.Settings
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.mediastack.NoticaScreen
@@ -57,6 +58,9 @@ fun NavegationHost(
             viewModel.showItem()
             val new2 = viewModel.resivirNoticia()
             NoticaScreen(new2, navHostController)
+        }
+        composable(ItemsMenuDW.PantallaGoogle.ruta){
+            MyGoogleMap()
         }
         composable(ItemsMenu.SettingsScreen.ruta) {
             viewModel.hideItem()

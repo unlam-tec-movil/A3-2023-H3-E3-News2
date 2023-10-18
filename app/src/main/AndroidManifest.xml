@@ -5,6 +5,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <!-- Permisos de ubicacion para googleMap-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
     <application
         android:name="ar.edu.unlam.mobile.scaffold.mobile2.HiltApplication"
         android:usesCleartextTraffic="true"
@@ -17,7 +22,11 @@
         android:theme="@style/Theme.Mobile2_Scaffolding"
         tools:targetApi="31">
 
-       
+        <!-- Metadata con la KEY de googleMap-->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAnZz_BX1cc7kL_w281g1ljoyCugdX1BFU"/>
+
         <activity
             android:name="ar.edu.unlam.mobile.scaffold.mobile2.MainActivity"
             android:exported="true"

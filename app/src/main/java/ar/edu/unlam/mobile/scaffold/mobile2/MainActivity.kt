@@ -6,13 +6,17 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Scaffold
+import androidx.compose.material.ScaffoldState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.material3.*
 import androidx.compose.material3.BottomAppBar
@@ -24,14 +28,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import ar.edu.unlam.mobile.scaffold.R
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.BotonFlotante
+import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.Drawer
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.MainTopAppBar
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.bottomnav.ItemsMenu
+import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.bottomnav.ItemsMenuDW
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.bottomnav.NavegationHost
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.guest.GuestViewModel
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.mediastack.NewsViewModel
@@ -46,6 +56,8 @@ import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -84,11 +96,16 @@ fun PantallaPrincipal(weatherViewModel: WeatherViewModel, viewModel: NewsViewMod
         ItemsMenu.Pantalla3,
     )
 
+    val navigationItemsMenuDW = listOf(
+        ItemsMenuDW.PantallaGoogle
+    )
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         backgroundColor = MaterialTheme.colorScheme.background,
         scaffoldState = scaffoldState,
-        topBar = { MainTopAppBar(navController) },
+        drawerContent = { Drawer(scope, scaffoldState, navController, menu_items = navigationItemsMenuDW)},
+        topBar = { MainTopAppBar(navController,scope, scaffoldState) },
         content = {
             Column(
                 Modifier
@@ -107,6 +124,7 @@ fun PantallaPrincipal(weatherViewModel: WeatherViewModel, viewModel: NewsViewMod
         floatingActionButton = { BotonFlotante(navController, viewModel) },
     )
 }
+
 
 @Composable
 fun currentRoute(navController: NavHostController): String? {
