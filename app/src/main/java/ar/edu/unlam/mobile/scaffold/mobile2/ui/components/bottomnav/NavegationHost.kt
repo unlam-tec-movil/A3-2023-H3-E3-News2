@@ -10,6 +10,7 @@ import ar.edu.unlam.mobile.scaffold.mobile2.domain.mediastack.models.New
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.guest.GuestViewModel
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.components.mediastack.NewsViewModel
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.Anadir
+import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.CamaraX
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.Favorito
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.Filtro
 import ar.edu.unlam.mobile.scaffold.mobile2.ui.screens.IngresarNombre
@@ -62,6 +63,12 @@ fun NavegationHost(
             viewModel.hideItem()
             Settings(guestViewModel)
         }
+
+        composable(ItemsMenu.Pantalla6.ruta) {
+            viewModel.hideItem()
+            CamaraX()
+        }
+
         composable(ItemsMenu.SplashScreen.ruta) {
             MySplashScreen(
                 navigate = {
